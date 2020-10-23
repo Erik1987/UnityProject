@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - lattia
+  - ovi
+  - pelaaja
+  - NextScene
+  - PreviousScene
+  - enemy
+  - "sein\xE4"
+  - object
+  - damage1
+  - HUDcanvas
+  - pathfinder
+  - hpslider
+  - damageP
+  - Coin
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - object
+  - pelaaja
+  - vihollinen
+  - 
+  - HUD
+  - 
+  - 
+  - obstacle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: object
+    uniqueID: 2138967449
+    locked: 0
+  - name: ovi
+    uniqueID: 2920364107
+    locked: 0
+  - name: nurkka
+    uniqueID: 3961845609
+    locked: 0
+  - name: "sein\xE4"
+    uniqueID: 2217601375
+    locked: 0
+  - name: lattia
+    uniqueID: 2321172431
+    locked: 0
+  - name: pelaaja
+    uniqueID: 613036365
+    locked: 0
+  - name: vihollinen
+    uniqueID: 2337411511
+    locked: 0
