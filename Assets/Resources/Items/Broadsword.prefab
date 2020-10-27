@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 2623584852105233891}
   - component: {fileID: 475865068499122356}
   - component: {fileID: -3714181249645945972}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Broadsword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,19 +144,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7030c6bd91b51054ca5818d6600ec624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
   item:
     id: -1
+    location: 
     name: 
     type: 
     damage: 0
+    defence: 0
     consumption: 0
     gain: 0
     stackable: 0
     storage: 0
+    cost: 0
   amount: 1
   canv: 0
-  x: 120
   enableRangedAttack: 1
 --- !u!225 &475865068499122356
 CanvasGroup:

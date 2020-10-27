@@ -1,23 +1,24 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 //[RequireComponent(typeof(Image))]
 public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,
     IPointerExitHandler
 {
-    [SerializeField] private Canvas canvas; // = GameObject.Find();
+    //[SerializeField] private Canvas canvas; // = GameObject.Find();
 
     public Item item;
     public int amount = 1;
     public int canv;
-    public char x = 'x';
+    private char x = 'x';
     private Vector3 vectorPos;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Inventory inv;
     private float scaleFactor = 1.0f, width1, height1, width2, height2;
     private Tooltip tooltip;
-
 
     // needs to disable ranged attack
     public bool enableRangedAttack = true;
@@ -69,16 +70,18 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             //Debug.Log("Screen resol: " + Screen.currentResolution);
             //Debug.Log("Camera aspect ratio: " + Camera.main.aspect);
             ifScreenSizeChanges(width1, height1);
+            eventData.selectedObject = GameObject.Find(rectTransform.transform.name);
+            Transform got = GameObject.Find($"Canvas_{canv}").transform;
+            transform.SetParent(got);
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public async void OnDrag(PointerEventData eventData)
     {
         if (ItemIsValid())
         {
             enableRangedAttack = false;
             rectTransform.anchoredPosition += eventData.delta / 1.5f; // rectTransform.localScale; // (float)scaleFactor; //or do  / canvas.scaleFactor;
-            var mousepos = Input.mousePosition;
         }
     }
 

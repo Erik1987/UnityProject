@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using JetBrains.Annotations;
 
 public class Inventory : MonoBehaviour
 {
@@ -25,37 +26,18 @@ public class Inventory : MonoBehaviour
         inventoryDB = GetComponent<InventoryDatabase>();
         slotAmount = 6;
         inventoryPanel = GameObject.Find("InventoryPanel");
+        inventoryPanel.AddComponent<Canvas>();
+        inventoryPanel.GetComponent<Canvas>().overrideSorting = true;
+        inventoryPanel.GetComponent<Canvas>().sortingOrder = 32765;
         slotPanel = inventoryPanel.transform.Find("SlotPanel").gameObject;
+        slotPanel.AddComponent<Canvas>();
+        slotPanel.GetComponent<Canvas>().overrideSorting = true;
+        slotPanel.GetComponent<Canvas>().sortingOrder = 32765;
 
         // preferred way to add new item to jsonDB, delete after first run (remember to add last value to true if you want to save an item to JsonDB)
         //inventoryDB.AddNewItem("shield_wood_basic_1", "Wooden Shield", "Shield", 0, 2, 0, 0, false, 0, 30, true);
 
-        // instantiate Slots in inventory panel
-        for (int i = 0; i < slotAmount; i++)
-        {
-            slots.Add(Instantiate(inventorySlot));
-            slots[i].transform.SetParent(slotPanel.transform);
-            slots[i].transform.localScale = new Vector3((float)3.427969, (float)2.114224, 1);
-            slots[i].transform.name = "Slot_" + i;
-        }
-        // instantiate Canvases for items
-        for (int i = 0; i < slotAmount; i++)
-        {
-            items.Add(new Item());
-            canvases.Add(Instantiate(inventoryCanvas));
-            canvases[i].GetComponent<ItemSlotDrop>().idx = i;
-            canvases[i].transform.SetParent(slots[i].transform);
-            canvases[i].transform.localScale = Vector3.one;
-            canvases[i].transform.name = "Canvas_" + i;
-            
-            GameObject placeholder = Instantiate(Resources.Load($"Items/Placeholder") as GameObject);
-            placeholder.GetComponent<ItemData>().canv = i;
-            placeholder.transform.name = "Placeholder";
-            placeholder.transform.SetParent(canvases[i].transform);
-            placeholder.transform.position = Vector3.zero;
-            placeholder.transform.localScale = Vector3.one;
-            placeholder.GetComponent<Image>().raycastTarget = enabled;
-        }
+        InstantiateSlotsAndCanvases();
 
         // here items are instantiated based on storage in JSON file
         InstantiatedItems();
@@ -76,6 +58,41 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void InstantiateSlotsAndCanvases()
+    {
+        // instantiate Slots in inventory panel
+        for (int i = 0; i < slotAmount; i++)
+        {
+            slots.Add(Instantiate(inventorySlot));
+            slots[i].transform.SetParent(slotPanel.transform);
+            slots[i].transform.localScale = new Vector3((float)3.427969, (float)2.114224, 1);
+            slots[i].transform.name = "Slot_" + i;
+            slots[i].AddComponent<Canvas>();
+            slots[i].GetComponent<Canvas>().overrideSorting = true;
+            slots[i].GetComponent<Canvas>().sortingOrder = 32766;
+        }
+        // instantiate Canvases for items
+        for (int i = 0; i < slotAmount; i++)
+        {
+            items.Add(new Item());
+            canvases.Add(Instantiate(inventoryCanvas));
+            canvases[i].GetComponent<ItemSlotDrop>().idx = i;
+            canvases[i].transform.SetParent(slots[i].transform);
+            canvases[i].transform.localScale = Vector3.one;
+            canvases[i].transform.name = "Canvas_" + i;
+            canvases[i].AddComponent<Canvas>();
+            canvases[i].GetComponent<Canvas>().overrideSorting = true;
+            canvases[i].GetComponent<Canvas>().sortingOrder = 32767;
+
+            GameObject placeholder = Instantiate(Resources.Load($"Items/Placeholder") as GameObject);
+            placeholder.GetComponent<ItemData>().canv = i;
+            placeholder.transform.name = "Placeholder";
+            placeholder.transform.SetParent(canvases[i].transform);
+            placeholder.transform.position = Vector3.zero;
+            placeholder.transform.localScale = Vector3.one;
+            placeholder.GetComponent<Image>().raycastTarget = enabled;
+        }
+    }
     public void InstantiateCoins()
     {
         coinObject = Instantiate(Resources.Load($"Items/coins_for_inventory") as GameObject);

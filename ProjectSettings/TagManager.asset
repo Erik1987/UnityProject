@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - obstacle
-  - 
+  - Item
   - 
   - 
   - 
@@ -75,4 +75,7 @@ TagManager:
     locked: 0
   - name: vihollinen
     uniqueID: 2337411511
+    locked: 0
+  - name: Item
+    uniqueID: 433688863
     locked: 0

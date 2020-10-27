@@ -69,9 +69,15 @@ public class RoomGenerator : MonoBehaviour
                         var spawnUp = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnUp");
                         var spawnDown = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnDown");
 
-                        if (scene1.name == "First Room" && scene2.name != "mainMenu")
+                        if (scene1.name == "First Room" && scene2.name != "mainMenu" && scene2.name != "bossHuone")
                         {
                             player.transform.localPosition = spawnDown.gameObject.transform.localPosition;
+                        }
+                        else if(scene2.name == "bossHuone")
+                        {
+                            var foo = scene2.GetRootGameObjects().ToList();
+                            var bossRoomSpawn = scene2.GetRootGameObjects().Where(s => s.name == "SpawnDown").FirstOrDefault().transform;
+                            player.transform.localPosition = bossRoomSpawn.localPosition;
                         }
                         else if (scene1.name == "mainMenu" && scene2.name == "First Room")
                         {
@@ -96,7 +102,6 @@ public class RoomGenerator : MonoBehaviour
                                 player.transform.localPosition = spawnDown.gameObject.transform.localPosition;
                             }
                         }
-                        //Instantiate(Resources.Load<GameObject>("Pathfinding/pathfinder"), spawnDown.gameObject.transform);
                         SceneManager.MoveGameObjectToScene(player, scene2);
                     }
                     obj.SetActive(true);
@@ -205,6 +210,7 @@ public class RoomGenerator : MonoBehaviour
                 int posY = row * -tileSize;
                 vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "S"));
                 vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "N"));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "L"));
 
                 ObjectGenerators.GenerateCorners(tiles, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom);
                 ObjectGenerators.GenerateWalls(tiles, col, row, roomSizeY, roomSizeX, posX, posY, staticGameObjects, vectors, tempRoom);

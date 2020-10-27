@@ -288,24 +288,26 @@ namespace Assets.Scripts
             {
                 var DoorLeftY = random.Next(0 + 2, roomY - 2) * -tileSize;
 
-                tiles[0] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft1")), tempRoom.transform);
+                tiles[0] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_14")), tempRoom.transform); 
                 vectors.Add(tiles[0].transform.localPosition = new Vector2(posX - 1f, DoorLeftY));
 
-                tiles[1] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft2")), tempRoom.transform);
-                vectors.Add(tiles[1].transform.localPosition = new Vector2(posX - 2f, DoorLeftY));
-
-                tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft3")), tempRoom.transform);
-                vectors.Add(tiles[2].transform.localPosition = new Vector2(posX - 3f, DoorLeftY));
-
-                tiles[3] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft4")), tempRoom.transform);
+                tiles[3] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_19")), tempRoom.transform); 
                 vectors.Add(tiles[3].transform.localPosition = new Vector2(posX - 1f, DoorLeftY - 1f));
 
-                tiles[4] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft5")), tempRoom.transform);
+                tiles[1] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_13")), tempRoom.transform); 
+                vectors.Add(tiles[1].transform.localPosition = new Vector2(posX - 2f, DoorLeftY));
+
+                tiles[4] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_18")), tempRoom.transform); 
                 vectors.Add(tiles[4].transform.localPosition = new Vector2(posX - 2f, DoorLeftY - 1f));
 
-                tiles[5] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorLeft6")), tempRoom.transform);
+                tiles[5] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_12")), tempRoom.transform); 
                 vectors.Add(tiles[5].transform.localPosition = new Vector2(posX - 3f, DoorLeftY - 1f));
+
+                tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_17")), tempRoom.transform); 
+                vectors.Add(tiles[2].transform.localPosition = new Vector2(posX - 3f, DoorLeftY));
+
                 setConstantObjects.Add("DoorLeft", true);
+
             }
 
             if (col == roomY && !setConstantObjects.ContainsKey("DoorRight") && doorDirection == "R")
@@ -331,7 +333,6 @@ namespace Assets.Scripts
                 vectors.Add(tiles[5].transform.localPosition = new Vector2(posX + 3, DoorRightY + 1f));
                 setConstantObjects.Add("DoorRight", true);
             }
-
             return vectorsAroundSpawn;
         }
 
