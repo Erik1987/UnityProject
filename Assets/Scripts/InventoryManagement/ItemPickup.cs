@@ -2,7 +2,7 @@
 
 public class ItemPickup : MonoBehaviour
 {
-    public enum PickupObject { COIN, HEART, MANA, MEMO }
+    public enum PickupObject { COIN, HEART, MANA, NOTE }
 
     public PickupObject currentObject;
     public int pickupQuantity;
@@ -33,9 +33,9 @@ public class ItemPickup : MonoBehaviour
             {
                 player.currentMana += pickupQuantity;
             }
-            else if (Input.GetKeyDown("x") && currentObject == PickupObject.MEMO)
+            else if (currentObject == PickupObject.NOTE)
             {
-                player.memos += pickupQuantity;
+                player.notes += pickupQuantity;
             }
             Destroy(gameObject);
         }

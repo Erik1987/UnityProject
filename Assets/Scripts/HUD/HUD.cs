@@ -21,8 +21,8 @@ public class HUD : MonoBehaviour
         instantiateInventoryPanel.transform.localPosition += Vector3.right;
         instantiateInventoryPanel.transform.localScale = new Vector3(0.5124438f, 0.81991f, 0.81991f);
         instantiateInventoryPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3((float)151.8261, (float)382.8076, (float)0);
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(250, 0); // left + bottom
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-50, -400); // right + top
+        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(250, -30); // left + bottom
+        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-50, -430); // right + top
 
         bool tempbool = false;
         //Find the object you're looking for
@@ -55,7 +55,6 @@ public class HUD : MonoBehaviour
             DestroyObjectHealthAndMana(index_health, index_mana);
             InstantiateHUDContent(MAX_health, MAX_mana);
         }
-
     }
     public void DestroyObjectHealthAndMana(int idx_health, int idx_mana)
     {
@@ -86,7 +85,7 @@ public class HUD : MonoBehaviour
         }
         for (int i = 0; i < MAX_health; i++)
         {
-            GameObject heart = (GameObject)Instantiate(gameObjects[0], new Vector3(((float)(x + -263.34)), (float)186.05, (float)0),
+            GameObject heart = (GameObject)Instantiate(gameObjects[0], new Vector3(((float)(x + -293.34)), (float)136.05, (float)0),
                 Quaternion.identity);
             heart.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform, false);
             heart.transform.localScale = new Vector3((float)48.62824, (float)54.06241, (float)0);
@@ -99,7 +98,7 @@ public class HUD : MonoBehaviour
         }
         for (int i = 0; i < MAX_mana; i++)
         {
-            GameObject mana = (GameObject)Instantiate(gameObjects[1], new Vector3(((float)(y + -263.8)), (float)167, (float)0),
+            GameObject mana = (GameObject)Instantiate(gameObjects[1], new Vector3(((float)(y + -293.34)), (float)116, (float)0),
                 Quaternion.identity);
             mana.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform, false);
             mana.transform.localScale = new Vector3((float)14.24891, (float)10.10564, (float)0);

@@ -10,7 +10,14 @@ public class Enemy : MonoBehaviour
     public GameObject tweetPrefab;
     private bool tweetShown;
     public GameObject coinDrop;
-    public GameObject memoDropChance;
+    private int noteNum;
+    public GameObject[] noteList;
+
+    private static bool note0hasSpawned = false;
+    private static bool note1hasSpawned = false;
+    private static bool note2hasSpawned = false;
+    private static bool note3hasSpawned = false;
+    private static bool note4hasSpawned = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -86,13 +93,50 @@ public class Enemy : MonoBehaviour
         System.Random random = new System.Random();
         int randomNumber = random.Next(0, 100);
 
+
         if (randomNumber >= 0 && randomNumber <= 20)
         {
             Instantiate(coinDrop, transform.position, Quaternion.identity);
         }
-        else if (randomNumber >= 95)
+        else if (randomNumber >= 98 && note0hasSpawned == false)
         {
-            Instantiate(memoDropChance, transform.position, Quaternion.identity);
+            noteNum = 0;
+            Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
+            note0hasSpawned = true;
+            UnityEngine.Debug.Log("Note 1 found!");
+
+        }
+        else if (randomNumber < 98 && randomNumber >= 96 && note1hasSpawned == false)
+        {
+            noteNum = 1;
+            Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
+            note1hasSpawned = true;
+            UnityEngine.Debug.Log("Note 2 found!");
+
+        }
+        else if (randomNumber < 96 && randomNumber >= 94 && note2hasSpawned == false)
+        {
+            noteNum = 2;
+            Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
+            note2hasSpawned = true;
+            UnityEngine.Debug.Log("Note 3 found!");
+
+        }
+        else if (randomNumber < 94 && randomNumber >= 92 && note3hasSpawned == false)
+        {
+            noteNum = 3;
+            Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
+            note3hasSpawned = true;
+            UnityEngine.Debug.Log("Note 4 found!");
+
+        }
+        else if (randomNumber < 92 && randomNumber >= 90 && note4hasSpawned == false)
+        {
+            noteNum = 4;
+            Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
+            note4hasSpawned = true;
+            UnityEngine.Debug.Log("Note 5 found!");
+
         }
     }
 }

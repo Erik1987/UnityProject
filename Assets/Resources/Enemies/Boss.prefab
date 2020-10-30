@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -152876755772357682}
   - component: {fileID: 1834272292018423229}
   - component: {fileID: 4793564861753865208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boss
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e7c21bb571e5acd4e9187d76ee9453da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,11 +124,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9f1de7d781ab3af4f992e9c8c339c1dd, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8966378511665450956
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.014278889, y: -0.49992657}
+  m_Offset: {x: -0.0028159618, y: 0.030110002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +153,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.943336, y: 0.50014687}
+  m_Size: {x: 2.3877983, y: 1.4576328}
   m_EdgeRadius: 0
 --- !u!114 &2341456780607677364
 MonoBehaviour:
@@ -196,12 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 1.01
-  height: 0.01
-  repathRate: 0.25
+  radius: 0.78
+  height: 2
+  repathRate: 0.1
   canSearch: 1
   canMove: 1
-  maxSpeed: 6
+  maxSpeed: 3
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -212,8 +212,8 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 0.8
+  slowdownDistance: 0.76
+  pickNextWaypointDist: 2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
+  target: {fileID: 8652178030735872933, guid: 5e72952eef342be47b16a1b4a3422f12, type: 3}
 --- !u!114 &4793564861753865208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,13 +246,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRenderer: {fileID: 6872484545149231571}
-  moveSpeed: 5
+  moveSpeed: 3
   animator: {fileID: 6872484545149231572}
   currentHealth: 15
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 7937932606959516779, guid: 3b5306a85c84f464b85b0fa46ef60717, type: 3}
   fireBallSpeed: 15
-  startTimeBtwShots: 0
-  AttackDistance: 10
+  startTimeBtwShots: 2
+  AttackDistance: 8
   iceBurstSpearSpeed: 12
   iceBurstSpearCount: 12
   iceBurstCooldownTime: 1

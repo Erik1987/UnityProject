@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8704020424694697129}
   - component: {fileID: 1537087821541868235}
   - component: {fileID: 7784738135560592280}
-  - component: {fileID: -1923090301741325931}
+  - component: {fileID: 5276071654950152821}
+  - component: {fileID: 735397778381361864}
   m_Layer: 10
   m_Name: EnemyKunai
   m_TagString: damageP
@@ -132,7 +133,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1099539, y: 0.40929627}
   m_EdgeRadius: 0
---- !u!114 &-1923090301741325931
+--- !u!114 &5276071654950152821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +142,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8704020424694697126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead7656351f1d8347976c46efec89ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: 39acb3b4ca588eb4fabc82cbd6d02443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &735397778381361864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8704020424694697126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bcb97f8c2daf54d9fd95210391cd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

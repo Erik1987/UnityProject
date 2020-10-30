@@ -22,7 +22,7 @@ public class EnemyBoss : MonoBehaviour
 
     private float timeBtwShots;
     public float startTimeBtwShots;
-    public float AttackDistance = 10;
+    public float AttackDistance;
 
     private GameObject iceSpear;
     public float iceBurstSpearSpeed = 12;

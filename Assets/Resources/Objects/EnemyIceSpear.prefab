@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1636743181800047282}
   - component: {fileID: 8544102423763730595}
   - component: {fileID: 1581685753459020312}
-  - component: {fileID: -7248312932634214229}
+  - component: {fileID: 7760875887643195771}
+  - component: {fileID: -2974071861161943235}
   m_Layer: 10
   m_Name: EnemyIceSpear
   m_TagString: damageP
@@ -44,7 +45,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.18065989, y: 0.031571627}
@@ -100,7 +101,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7c21bb571e5acd4e9187d76ee9453da, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +133,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7248312932634214229
+--- !u!114 &7760875887643195771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +142,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5234364469958514085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead7656351f1d8347976c46efec89ce3, type: 3}
+  m_Script: {fileID: 11500000, guid: 39acb3b4ca588eb4fabc82cbd6d02443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2974071861161943235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5234364469958514085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bcb97f8c2daf54d9fd95210391cd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

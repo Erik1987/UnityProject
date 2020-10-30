@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public Vector2 movement;
+    private Scene previousScene;
 
     private void Start()
     {
@@ -42,34 +43,59 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!enemies.Any())
                 {
+                    previousScene = SceneManager.GetActiveScene();
                     SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene + 1)));
                     currentScene++;
                 }
             }
             else
             {
+                previousScene = SceneManager.GetActiveScene();
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene + 1)));
                 currentScene++;
             }
         }
-        //GameObject[] spawns = FindObjectsOfType<GameObject>().Where(s => s.scene == SceneManager.GetActiveScene()).Where(s => s.name.ToLower().Contains("spawn")).ToArray();
-
-        //if (collision.collider.CompareTag("enemy"))
-        //{
-        //    var randomSpawn = Random.Range(0, spawns.Count());
-        //    transform.position = new Vector3(spawns[randomSpawn].transform.position.x + 1f, spawns[randomSpawn].transform.position.y - 1f, 0f);
-        //}
-
         if (collision.collider.CompareTag("PreviousScene"))
         {
             if (SceneManager.GetActiveScene().name != "Scene 1")
             {
                 if (!enemies.Any())
                 {
+                    previousScene = SceneManager.GetActiveScene();
                     SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene - 1)));
                     currentScene--;
                 }
             }
+        }
+
+        if (collision.collider.CompareTag("DoorToStore"))
+        {
+            if (!enemies.Any())
+            {
+                previousScene = SceneManager.GetActiveScene();
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Store"));
+            }
+        }
+
+        if (collision.collider.CompareTag("DoorToBoss"))
+        {
+            if (!enemies.Any())
+            {
+                previousScene = SceneManager.GetActiveScene();
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("bossHuone"));
+            }
+        }
+
+        if (collision.collider.CompareTag("BackFromBoss"))
+        {
+            previousScene = SceneManager.GetActiveScene();
+            SceneManager.SetActiveScene(previousScene);
+        }
+
+        if (collision.collider.CompareTag("BackFromStore"))
+        {
+            previousScene = SceneManager.GetActiveScene();
+            SceneManager.SetActiveScene(previousScene);
         }
     }
 }

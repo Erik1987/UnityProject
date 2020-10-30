@@ -4,6 +4,13 @@ using UnityEngine.UI;
 using TMPro;
 using JetBrains.Annotations;
 
+public static class hasComponent
+{
+    public static bool HasNotComponent<T>(this GameObject flag) where T : Component
+    {
+        return flag.GetComponent<T>() == null;
+    }
+}
 public class Inventory : MonoBehaviour
 {
     InventoryDatabase inventoryDB;
@@ -21,16 +28,23 @@ public class Inventory : MonoBehaviour
     public static int coins = 0;
     private int currentCoins;
 
+   
     private void Start()
     {
         inventoryDB = GetComponent<InventoryDatabase>();
         slotAmount = 6;
         inventoryPanel = GameObject.Find("InventoryPanel");
+        if (inventoryPanel.HasNotComponent<Canvas>())
+        {
         inventoryPanel.AddComponent<Canvas>();
+        }
+        slotPanel = inventoryPanel.transform.Find("SlotPanel").gameObject;
+        if (slotPanel.HasNotComponent<Canvas>())
+        {
+        slotPanel.AddComponent<Canvas>();
+        }
         inventoryPanel.GetComponent<Canvas>().overrideSorting = true;
         inventoryPanel.GetComponent<Canvas>().sortingOrder = 32765;
-        slotPanel = inventoryPanel.transform.Find("SlotPanel").gameObject;
-        slotPanel.AddComponent<Canvas>();
         slotPanel.GetComponent<Canvas>().overrideSorting = true;
         slotPanel.GetComponent<Canvas>().sortingOrder = 32765;
 
@@ -67,7 +81,10 @@ public class Inventory : MonoBehaviour
             slots[i].transform.SetParent(slotPanel.transform);
             slots[i].transform.localScale = new Vector3((float)3.427969, (float)2.114224, 1);
             slots[i].transform.name = "Slot_" + i;
+            if (slots[i].HasNotComponent<Canvas>())
+            {
             slots[i].AddComponent<Canvas>();
+            }
             slots[i].GetComponent<Canvas>().overrideSorting = true;
             slots[i].GetComponent<Canvas>().sortingOrder = 32766;
         }
@@ -80,7 +97,10 @@ public class Inventory : MonoBehaviour
             canvases[i].transform.SetParent(slots[i].transform);
             canvases[i].transform.localScale = Vector3.one;
             canvases[i].transform.name = "Canvas_" + i;
+            if (canvases[i].HasNotComponent<Canvas>())
+            {
             canvases[i].AddComponent<Canvas>();
+            }
             canvases[i].GetComponent<Canvas>().overrideSorting = true;
             canvases[i].GetComponent<Canvas>().sortingOrder = 32767;
 
@@ -101,7 +121,7 @@ public class Inventory : MonoBehaviour
         coinObject.transform.position = Vector3.zero;
         coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
         coinObject.transform.localScale = new Vector3(3, 3, 1);
-        coinObject.transform.localPosition = new Vector3(-710, 400, (float)-26.11531);
+        coinObject.transform.localPosition = new Vector3(-760, 350, (float)-26.11531);
         if (currentCoins >= 0)
         {
             coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);

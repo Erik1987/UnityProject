@@ -70,18 +70,108 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             //Debug.Log("Screen resol: " + Screen.currentResolution);
             //Debug.Log("Camera aspect ratio: " + Camera.main.aspect);
             ifScreenSizeChanges(width1, height1);
-            eventData.selectedObject = GameObject.Find(rectTransform.transform.name);
-            Transform got = GameObject.Find($"Canvas_{canv}").transform;
-            transform.SetParent(got);
+            //eventData.selectedObject = GameObject.Find(rectTransform.transform.name);
+            //Transform got = GameObject.Find($"Canvas_{canv}").transform;
+            //transform.SetParent(got);
+            //Debug.Log("RectAnchoredpos: " + rectTransform.anchoredPosition);
+            //Debug.Log("WorldToScreenPoint: " + Camera.main.ScreenToViewportPoint(rectTransform.anchoredPosition));
         }
     }
 
     public async void OnDrag(PointerEventData eventData)
     {
+        var screenModifier = 0;
+        var modifier = 1.0f;
         if (ItemIsValid())
         {
             enableRangedAttack = false;
-            rectTransform.anchoredPosition += eventData.delta / 1.5f; // rectTransform.localScale; // (float)scaleFactor; //or do  / canvas.scaleFactor;
+            if (Screen.width == 1280 && Screen.height == 547)
+            {
+                screenModifier = 1;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using Free aspect scaling factor");
+            }
+            else if(Screen.width == 684 && Screen.height == 547)
+            {
+                screenModifier = 2;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using 5:4 acpect scaling factor");
+            }
+            else if (Screen.width == 729 && Screen.height == 547)
+            {
+                screenModifier = 3;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using 4:3 acpect scaling factor");
+            }
+            else if (Screen.width == 820 && Screen.height == 547)
+            {
+                screenModifier = 4;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using 3:2 acpect scaling factor");
+            }
+            else if (Screen.width == 875 && Screen.height == 547)
+            {
+                screenModifier = 5;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using 16:10 acpect scaling factor");
+            }
+            else if (Screen.width == 972 && Screen.height == 547)
+            {
+                screenModifier = 6;
+                modifier = 1 + 0.547f;
+                //Debug.Log("Using 16:9 acpect scaling factor");
+            }
+            else if (Screen.width == 1024 && Screen.height == 768)
+            {
+                screenModifier = 7;
+                modifier = 1 + 0.768f;
+                //Debug.Log("Using standalone acpect scaling factor");
+            }
+            else if (Screen.width == 1920 && Screen.height == 1080)
+            {
+                screenModifier = 8;
+                modifier = 1 + 1.080f;
+                //Debug.Log("Using HD acpect scaling factor");
+            }
+            //rectTransform.anchoredPosition += eventData.delta / 1.547f; // rectTransform.localScale; // (float)scaleFactor; //or do  / canvas.scaleFactor;
+            switch (screenModifier)
+        {
+                // for freeaspect = 1280x547
+                case 1:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for 5:4 = 684x547
+                case 2:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for 4:3 = 729x547
+                case 3:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for 3:2 = 820x547
+                case 4:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for 16:10 = 875x547
+                case 5:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for 16:9 = 972x547
+                case 6:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+                // for standalone = 1024x768
+                case 7:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.6f, eventData.delta.y / 1.6f);
+                    break;
+                // for HD = 1920x1080
+                case 8:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 4.920f, eventData.delta.y / 4.080f);
+                    break;
+                default:
+                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                    break;
+        }
         }
     }
 

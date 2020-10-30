@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8460720047715365331}
   - component: {fileID: 4908659588732344394}
   - component: {fileID: 3536214902217767524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SmartNinja
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -284,4 +284,9 @@ MonoBehaviour:
   currentMana: 2
   tweetPrefab: {fileID: 2296995199024147687, guid: f89a45adea7863a41bafb528f35e4ace, type: 3}
   coinDrop: {fileID: 3874165876061406940, guid: d347b714bbbb6984b85f0ef084f44e9e, type: 3}
-  memoDropChance: {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  noteList:
+  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}

@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     public int currentMana;
     public string gameMode;
     public int coins = 0;
-    public int memos;
-    public static bool IsDead = false;
+    public int notes;
+    private static bool IsDead = false;
     public string currentSceneName;
 
     public GameObject GameOver;
