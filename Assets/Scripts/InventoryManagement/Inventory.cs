@@ -121,7 +121,7 @@ public class Inventory : MonoBehaviour
         coinObject.transform.position = Vector3.zero;
         coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
         coinObject.transform.localScale = new Vector3(3, 3, 1);
-        coinObject.transform.localPosition = new Vector3(-760, 350, (float)-26.11531);
+        coinObject.transform.localPosition = new Vector3(-570, 350, (float)-26.11531);
         if (currentCoins >= 0)
         {
             coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);

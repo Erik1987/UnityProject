@@ -19,7 +19,7 @@ public class Tooltip : MonoBehaviour
         {
             tooltip.GetComponent<RectTransform>();
             tooltip.transform.localScale = new Vector3((float)3.5, (float)3.5, 1);
-            tooltip.transform.localPosition = new Vector3(-330, 40, 0);
+            tooltip.transform.localPosition = new Vector3(-350, 80, 0);
             //tooltip.transform.localposition = (input.mouseposition / (float)11) + new vector3(-100,-10,0);
         }
     }

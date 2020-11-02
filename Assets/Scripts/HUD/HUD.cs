@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -21,12 +22,16 @@ public class HUD : MonoBehaviour
         instantiateInventoryPanel.transform.localPosition += Vector3.right;
         instantiateInventoryPanel.transform.localScale = new Vector3(0.5124438f, 0.81991f, 0.81991f);
         instantiateInventoryPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3((float)151.8261, (float)382.8076, (float)0);
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(250, -30); // left + bottom
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-50, -430); // right + top
+        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(150, 0); // left + bottom
+        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-150, -400); // right + top
 
         bool tempbool = false;
         //Find the object you're looking for
         GameObject tempObject = GameObject.Find("HUDcanvas");
+        tempObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        tempObject.GetComponent<Canvas>().pixelPerfect = true;
+        tempObject.GetComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+
         if (tempObject != null)
         {
             //If we found the object , get the Canvas component from it.
@@ -88,8 +93,9 @@ public class HUD : MonoBehaviour
             GameObject heart = (GameObject)Instantiate(gameObjects[0], new Vector3(((float)(x + -293.34)), (float)136.05, (float)0),
                 Quaternion.identity);
             heart.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform, false);
-            heart.transform.localScale = new Vector3((float)48.62824, (float)54.06241, (float)0);
-            heart.GetComponent<SpriteRenderer>().sortingOrder = 32767;
+            heart.transform.localScale = new Vector3((float)1, (float)1, (float)1);
+            //heart.AddComponent<Canvas>();
+            //heart.GetComponent<Canvas>().sortingOrder = 32767;
             heart.name = "heart_" + i;
             // i * 2.0F, 0, 0
             heart.SetActive(true);
@@ -101,8 +107,9 @@ public class HUD : MonoBehaviour
             GameObject mana = (GameObject)Instantiate(gameObjects[1], new Vector3(((float)(y + -293.34)), (float)116, (float)0),
                 Quaternion.identity);
             mana.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform, false);
-            mana.transform.localScale = new Vector3((float)14.24891, (float)10.10564, (float)0);
-            mana.GetComponent<SpriteRenderer>().sortingOrder = 32767;
+            mana.transform.localScale = new Vector3((float)1, (float)1, (float)1);
+            //mana.AddComponent<Canvas>();
+            //mana.GetComponent<Canvas>().sortingOrder = 32767;
             mana.name = "mana_" + i;
             mana.SetActive(true);
             y += 20;
