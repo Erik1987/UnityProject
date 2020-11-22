@@ -1,0 +1,91 @@
+{
+    "player": [
+        {
+            "id": 0,
+            "name": "Example",
+            "projectileSpeed": 0,
+            "projectileCount": 0,
+            "projectileSpread": 0,
+            "projectileWaves":0,
+            "projectileFrequence": 0,
+            "projectileScale": 0,
+            "distance": 0,
+            "duration": 0,
+            "cooldown": false,
+            "cooldownTime": 0
+        },
+        {
+            "id": 1,
+            "name": "Fireball",
+            "projectileSpeed": 12.0,
+            "projectileCount": 5,
+            "projectileSpread": 20.0,
+            "projectileWaves": 1,
+            "projectileScale": 0.7,
+            "cooldown": false,
+            "cooldownTime": 0.2
+        },
+        {
+            "id": 2,
+            "name": "Ice Burst",
+            "projectileSpeed": 12.0,
+            "projectileCount": 12,
+            "projectileScale": 0.5,
+            "cooldown": false,
+            "cooldownTime": 1.0
+        },
+        {
+            "id": 3,
+            "name": "Ice Spiral",
+            "projectileSpeed": 12.0,
+            "projectileCount": 18,
+            "projectileWaves": 2,
+            "projectileFrequence": 0.05,
+            "projectileScale": 0.5,
+            "cooldown": false,
+            "cooldownTime": 3.0
+        },
+        {
+            "id": 4,
+            "name": "Lightning Sigil",
+            "projectileCount": 3,
+            "duration": 2.0,
+            "cooldown": false,
+            "cooldownTime": 2.0
+        },
+        {
+            "id": 5,
+            "name": "Dash",
+            "distance": 3.0,
+            "cooldown": false,
+            "cooldownTime": 1.0
+        }
+
+    ],
+    "rangedNinja": [
+        {
+            "id": 1,
+            "name": "Ninja Knife",
+            "projectileSpeed": 15.0
+        }
+    ],
+    "boss": [
+        {
+            "id": 1,
+            "name": "Fireball",
+            "projectileSpeed": 5.0,
+            "projectileCount": 7,
+            "projectileSpread": 12.0,
+            "projectileScale": 1.5
+        },
+        {
+            "id": 2,
+            "name": "Ice Burst",
+            "projectileSpeed": 8.0,
+            "projectileCount": 12,
+            "projectileScale": 0.7,
+            "cooldown": false,
+            "cooldownTime": 1.2
+        }
+    ]
+}

@@ -22,6 +22,14 @@ TagManager:
   - BackFromStore
   - DoorToBoss
   - BackFromBoss
+  - StoryNote
+  - StoryNote1
+  - StoryNote2
+  - StoryNote3
+  - StoryNote4
+  - item
+  - slot_canvas
+  - slot
   layers:
   - Default
   - TransparentFX

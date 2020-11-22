@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/First Room.unity
     guid: 60d63aea83cfa854da2c7d7eafc3e98b
+  - enabled: 1
+    path: Assets/Scenes/bossHuone.unity
+    guid: 4ef55f46baa95d04faa05ac0868bff59
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: ded941fe2b22d514c9892e96790ef5e0
   m_configObjects: {}

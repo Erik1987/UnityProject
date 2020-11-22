@@ -54,6 +54,7 @@ public class EnemyNinja : MonoBehaviour
         {
             UnityEngine.Debug.Log("DIE!!!!!");
             Instantiate(deathParticle, enemyObj.transform.position, enemyObj.transform.rotation);
+            FindObjectOfType<AudioManager>().Play("EnemyDeath");
         }
     }
 

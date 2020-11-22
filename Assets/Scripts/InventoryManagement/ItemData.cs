@@ -141,29 +141,29 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
                     rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
                     break;
                 // for 5:4 = 684x547
-                case 2:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
-                    break;
-                // for 4:3 = 729x547
-                case 3:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
-                    break;
-                // for 3:2 = 820x547
-                case 4:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
-                    break;
-                // for 16:10 = 875x547
-                case 5:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
-                    break;
-                // for 16:9 = 972x547
-                case 6:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
-                    break;
-                // for standalone = 1024x768
-                case 7:
-                    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.6f, eventData.delta.y / 1.6f);
-                    break;
+                //case 2:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                //    break;
+                //// for 4:3 = 729x547
+                //case 3:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                //    break;
+                //// for 3:2 = 820x547
+                //case 4:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                //    break;
+                //// for 16:10 = 875x547
+                //case 5:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                //    break;
+                //// for 16:9 = 972x547
+                //case 6:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
+                //    break;
+                //// for standalone = 1024x768
+                //case 7:
+                //    rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.6f, eventData.delta.y / 1.6f);
+                //    break;
                 // for HD = 1920x1080
                 case 8:
                     rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 4.920f, eventData.delta.y / 4.080f);

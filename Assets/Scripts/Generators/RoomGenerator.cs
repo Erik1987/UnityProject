@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Player;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Assets.Scripts.Models;
@@ -15,7 +17,7 @@ public class RoomGenerator : MonoBehaviour
     private int roomSizeX;
     private int roomSizeY;
 
-    public void StartGame(int sceneAmount, int roomMaxSizeX, int roomMaxSizeY, int roomMinSizeY, int roomMinSizeX)
+    public async Task StartGame(int sceneAmount, int roomMaxSizeX, int roomMaxSizeY, int roomMinSizeY, int roomMinSizeX)
     {
         for (int i = 0; i < sceneAmount; i++)
         {
@@ -34,7 +36,6 @@ public class RoomGenerator : MonoBehaviour
     private void OnActiveSceneChanged(Scene scene1, Scene scene2)
     {
         Scene activeScene = SceneManager.GetActiveScene();
-
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
@@ -54,38 +55,43 @@ public class RoomGenerator : MonoBehaviour
                     if (scene1.name != null)
                     {
                         player = scene1.GetRootGameObjects().FirstOrDefault(s => s.name == "Player");
-                        agents = scene1.GetRootGameObjects().Where(s => s.name.Contains("agent")).ToList();
                     }
 
                     if (player != null)
                     {
-                        foreach (var agent in agents)
-                        {
-                            agent.SetActive(true);
-                            agent.transform.parent = player.transform;
-                            agent.transform.localPosition = player.transform.localPosition;
-                        }
                         player.SetActive(true);
                         var spawnUp = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnUp");
                         var spawnDown = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnDown");
 
                         if (scene1.name == "First Room" && scene2.name != "mainMenu" && scene2.name != "bossHuone")
                         {
-                            player.transform.localPosition = spawnDown.gameObject.transform.localPosition;
+                            player.transform.position = spawnDown.gameObject.transform.position;
                         }
                         else if(scene2.name == "bossHuone")
                         {
-                            var foo = scene2.GetRootGameObjects().ToList();
                             var bossRoomSpawn = scene2.GetRootGameObjects().Where(s => s.name == "SpawnDown").FirstOrDefault().transform;
-                            player.transform.localPosition = bossRoomSpawn.localPosition;
+                            player.transform.position = bossRoomSpawn.position;
                         }
                         else if (scene1.name == "mainMenu" && scene2.name == "First Room")
                         {
-                            player.transform.localPosition = new Vector3(-1f, 0f, 0f);
+                            player.transform.position = new Vector3(-1f, 0f, 0f);
                         }
                         else if (scene2.name == "mainMenu")
                         {
                             // TODO thingy
+                        }
+                        else if(scene1.name == "bossHuone")
+                        {
+                            player.transform.position = spawnDown.gameObject.transform.position;
+                        }
+                        else if (scene1.name == "Shop")
+                        {
+                            var spawnLeft = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnLeft");
+                            player.transform.position = spawnLeft.gameObject.transform.position;
+                        }
+                        else if (scene2.name == "Shop")
+                        {
+                            player.transform.position = spawnDown.gameObject.transform.position;
                         }
                         else
                         {
@@ -94,12 +100,12 @@ public class RoomGenerator : MonoBehaviour
 
                             if (scene2Number < scene1Number)
                             {
-                                player.transform.localPosition = spawnUp.gameObject.transform.localPosition;
+                                player.transform.position = spawnUp.gameObject.transform.position;
                             }
 
                             if (scene2Number > scene1Number)
                             {
-                                player.transform.localPosition = spawnDown.gameObject.transform.localPosition;
+                                player.transform.position = spawnDown.gameObject.transform.position;
                             }
                         }
                         SceneManager.MoveGameObjectToScene(player, scene2);
@@ -208,9 +214,9 @@ public class RoomGenerator : MonoBehaviour
             {
                 int posX = col * tileSize;
                 int posY = row * -tileSize;
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "S"));
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "N"));
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "L"));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "S", floorNumber));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "N", floorNumber));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "L", floorNumber));
 
                 ObjectGenerators.GenerateCorners(tiles, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom);
                 ObjectGenerators.GenerateWalls(tiles, col, row, roomSizeY, roomSizeX, posX, posY, staticGameObjects, vectors, tempRoom);
@@ -239,7 +245,8 @@ public class RoomGenerator : MonoBehaviour
         }
 
         #region SmallObjects
-
+        var meleeEnemyCount = 0;
+        var rangeEnemyCount = 0;
         // TODO create more generic way of creating objects. ForEach loop for every item is not very efficient.
         foreach (var vector in randomObjectVectors.SmallRock1Vectors)
         {
@@ -255,11 +262,19 @@ public class RoomGenerator : MonoBehaviour
         }
         foreach (var vector in randomObjectVectors.EnemyMeleeVectors)
         {
-            ObjectGenerators.GenerateMeleeEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
+            if(difficulty > meleeEnemyCount * 1.5)
+            {
+                ObjectGenerators.GenerateMeleeEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
+                meleeEnemyCount++;
+            }
         }
         foreach (var vector in randomObjectVectors.EnemyRangedVectors)
         {
-            ObjectGenerators.GenerateRangedEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
+            if (difficulty > rangeEnemyCount * 1.5)
+            {
+                ObjectGenerators.GenerateRangedEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
+                rangeEnemyCount++;
+            }
         }
 
         #endregion SmallObjects

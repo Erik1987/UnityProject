@@ -194,7 +194,7 @@ namespace Assets.Scripts
             enemyNumber++;
         }
 
-        public static List<Vector2> GenerateDoors(List<GameObject> tiles, int tileSize, int col, int row, int roomY, int roomX, int posX, int posY, Dictionary<string, bool> setConstantObjects, List<GameObject> gameobjects, List<Vector2> vectors, GameObject tempRoom, string doorDirection)
+        public static List<Vector2> GenerateDoors(List<GameObject> tiles, int tileSize, int col, int row, int roomY, int roomX, int posX, int posY, Dictionary<string, bool> setConstantObjects, List<GameObject> gameobjects, List<Vector2> vectors, GameObject tempRoom, string doorDirection, int floorNumber)
         {
             var doorAmount = new System.Random().Next(1, 4);
             var vectorsAroundSpawn = new List<Vector2>();
@@ -232,9 +232,17 @@ namespace Assets.Scripts
                 vectors.Add(tiles[5].transform.localPosition = new Vector2(DoorUpX + 1f, posY + 3f));
                 setConstantObjects.Add("DoorUp", true);
 
+                if (floorNumber % 7 == 0)
+                {
+                    foreach (var tile in tiles)
+                    {
+                        tile.tag = "DoorToBoss";
+                    }
+                }
+
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("Spawn")), tempRoom.transform);
                 tiles[8].name = "SpawnUp";
-                tiles[8].transform.localPosition = new Vector2(DoorUpX, posY - 1f);
+                tiles[8].transform.localPosition = new Vector2(DoorUpX, posY - 2f);
                 vectorsAroundSpawn.Add(new Vector2(DoorUpX, posY - 1f));
                 vectorsAroundSpawn.Add(new Vector2(DoorUpX, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorUpX - 1, posY));
@@ -276,7 +284,7 @@ namespace Assets.Scripts
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("Spawn")), tempRoom.transform);
                 tiles[8].name = "SpawnDown";
                 tiles[8].transform.localPosition = new Vector2(DoorDownX, posY + 1);
-                vectorsAroundSpawn.Add(new Vector2(DoorDownX, posY + 1f));
+                vectorsAroundSpawn.Add(new Vector2(DoorDownX, posY + 2f));
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX + 1, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX - 1, posY));
@@ -305,6 +313,10 @@ namespace Assets.Scripts
 
                 tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_17")), tempRoom.transform); 
                 vectors.Add(tiles[2].transform.localPosition = new Vector2(posX - 3f, DoorLeftY));
+                var foo = new Inventory();
+                tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("Spawn")), tempRoom.transform);
+                tiles[8].name = "SpawnLeft";
+                tiles[8].transform.localPosition = new Vector2(posX, DoorLeftY);
 
                 setConstantObjects.Add("DoorLeft", true);
 

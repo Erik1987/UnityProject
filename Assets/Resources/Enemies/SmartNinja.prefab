@@ -286,7 +286,7 @@ MonoBehaviour:
   coinDrop: {fileID: 3874165876061406940, guid: d347b714bbbb6984b85f0ef084f44e9e, type: 3}
   noteList:
   - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
-  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
-  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
-  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
-  - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
+  - {fileID: 3581024011846353403, guid: c4a51c52bb8654e4d930e332b30b01dd, type: 3}
+  - {fileID: 3581024011846353403, guid: dbe7dec706b0ff94ba76acf019c1519e, type: 3}
+  - {fileID: 3581024011846353403, guid: 9a893b6beba70284389e0fd175b609cc, type: 3}
+  - {fileID: 3581024011846353403, guid: 40e262be1d3b99340b4c1e31f16e3e2c, type: 3}

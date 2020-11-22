@@ -19,8 +19,11 @@ public class Chest : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("f") &&
+            opened == false &&
+            Vector2.Distance(transform.position, player.transform.position) < 2f)
         {
+            opened = true;
             OpenChest();
             StartCoroutine(DropLoot());
         }
@@ -37,12 +40,7 @@ public class Chest : MonoBehaviour
 
     private void OpenChest()
     {
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        if (!opened && distance < 2f)
-        {
-            opened = true;
-            gameObject.GetComponent<Animator>().SetTrigger("open");
-        }
+        gameObject.GetComponent<Animator>().SetTrigger("open");
     }
 
     private IEnumerator DropLoot()

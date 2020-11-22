@@ -9,13 +9,22 @@ public class SceneLoader : MonoBehaviour
     public int roomMaxSizeY = 20;
     public int roomMinSizeY = 20;
     public int roomMinSizeX = 20;
-
+    private bool firstTimeLoad = true;
     public void StartGame()
     {
         Time.timeScale = 1f;
 
         var roomGenerator = gameObject.AddComponent<RoomGenerator>();
-        roomGenerator.StartGame(sceneAmount, roomMaxSizeX, roomMaxSizeY, roomMinSizeY, roomMinSizeX);
+        var foo = roomGenerator.StartGame(sceneAmount, roomMaxSizeX, roomMaxSizeY, roomMinSizeY, roomMinSizeX);
+
+        // PutOnLoadingScreen()
+        //while(!foo.IsCompleted)
+        //{
+        //    if (foo.IsCompleted)
+        //    {
+        //        PutOfLoadingScreen()
+        //    }
+        //}
 
         var objects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "New Game Object");
         foreach (var obj in objects)
@@ -24,7 +33,10 @@ public class SceneLoader : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene("bossHuone", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Shop", LoadSceneMode.Additive);
         SceneManager.LoadScene("First Room", LoadSceneMode.Additive);
+        firstTimeLoad = false;
     }
 
     public void QuitGame()
@@ -34,6 +46,18 @@ public class SceneLoader : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SceneManager.SetActiveScene(scene);
+        if(scene.name == "First Room")
+        {
+            SceneManager.SetActiveScene(scene);
+        }
+        if (scene.name == "bossHuone" && !firstTimeLoad)
+        {
+            GameObject[] rootGameObjects = scene.GetRootGameObjects();
+
+            foreach (var obj in rootGameObjects)
+            {
+                obj.SetActive(false);
+            }
+        }
     }
 }

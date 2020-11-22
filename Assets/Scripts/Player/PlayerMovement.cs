@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Assets.Scripts.Player;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,10 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public Vector2 movement;
-    private Scene previousScene;
+    private Player player;
 
     private void Start()
     {
+        player = gameObject.GetComponent<Player>();
+        player.trackedScenes = gameObject.AddComponent<TrackedScenes>();
+        player.trackedScenes.CacheAllRoomScenes();
     }
 
     // Update is called once per frame
@@ -31,8 +35,6 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
 
-    private int currentScene = 0;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject[] enemies = FindObjectsOfType<GameObject>().Where(s => s.scene == SceneManager.GetActiveScene()).Where(s => s.name.Contains("Enemy") && !s.name.Contains("Spawn")).ToArray();
@@ -43,27 +45,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!enemies.Any())
                 {
-                    previousScene = SceneManager.GetActiveScene();
-                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene + 1)));
-                    currentScene++;
+                    SceneManager.SetActiveScene(player.trackedScenes.NextScene);
                 }
             }
             else
             {
-                previousScene = SceneManager.GetActiveScene();
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene + 1)));
-                currentScene++;
+                SceneManager.SetActiveScene(player.trackedScenes.NextScene);
             }
         }
+
         if (collision.collider.CompareTag("PreviousScene"))
         {
             if (SceneManager.GetActiveScene().name != "Scene 1")
             {
                 if (!enemies.Any())
                 {
-                    previousScene = SceneManager.GetActiveScene();
-                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Scene " + (currentScene - 1)));
-                    currentScene--;
+                    SceneManager.SetActiveScene(player.trackedScenes.PreviousScene);
                 }
             }
         }
@@ -72,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!enemies.Any())
             {
-                previousScene = SceneManager.GetActiveScene();
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Store"));
+                player.trackedScenes.OriginalScene = SceneManager.GetActiveScene();
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Shop"));
             }
         }
 
@@ -81,21 +78,23 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!enemies.Any())
             {
-                previousScene = SceneManager.GetActiveScene();
+                player.trackedScenes.OriginalScene = SceneManager.GetActiveScene();
                 SceneManager.SetActiveScene(SceneManager.GetSceneByName("bossHuone"));
             }
         }
 
         if (collision.collider.CompareTag("BackFromBoss"))
         {
-            previousScene = SceneManager.GetActiveScene();
-            SceneManager.SetActiveScene(previousScene);
+            var currentScene = SceneManager.GetActiveScene();
+            SceneManager.SetActiveScene(player.trackedScenes.NextScene);
+            SceneManager.UnloadSceneAsync(currentScene.buildIndex);
+            SceneManager.LoadSceneAsync("bossHuone", LoadSceneMode.Additive);
         }
 
         if (collision.collider.CompareTag("BackFromStore"))
         {
-            previousScene = SceneManager.GetActiveScene();
-            SceneManager.SetActiveScene(previousScene);
+            var currentScene = SceneManager.GetActiveScene();
+            SceneManager.SetActiveScene(player.trackedScenes.OriginalScene);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 public class ItemPickup : MonoBehaviour
 {
-    public enum PickupObject { COIN, HEART, MANA, NOTE }
+    public enum PickupObject { COIN, HEART, MANA }
 
     public PickupObject currentObject;
     public int pickupQuantity;
@@ -24,19 +24,19 @@ public class ItemPickup : MonoBehaviour
             {
                 player.coins += pickupQuantity;
                 Inventory.coins += pickupQuantity;
+                FindObjectOfType<AudioManager>().Play("coinpickup");
             }
             else if (currentObject == PickupObject.HEART)
             {
                 player.currentHealth += pickupQuantity;
+                
             }
             else if (currentObject == PickupObject.MANA)
             {
                 player.currentMana += pickupQuantity;
+                FindObjectOfType<AudioManager>().Play("manapickup");
             }
-            else if (currentObject == PickupObject.NOTE)
-            {
-                player.notes += pickupQuantity;
-            }
+
             Destroy(gameObject);
         }
     }

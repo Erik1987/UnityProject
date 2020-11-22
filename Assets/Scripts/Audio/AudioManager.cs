@@ -6,12 +6,13 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
     public static AudioManager instance;
+    [HideInInspector]
     public string Shop;
 
     private void Awake()
     {
         Scene scene = SceneManager.GetActiveScene();
-        //testaa!
+        //kesken!
         if (instance == null)
         {
             instance = this;

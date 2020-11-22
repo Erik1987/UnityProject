@@ -1,4 +1,5 @@
-﻿using Pathfinding;
+﻿using Assets.Scripts.Player;
+using Pathfinding;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,10 @@ public class Player : MonoBehaviour
     public int currentMana;
     public string gameMode;
     public int coins = 0;
-    public int notes;
     private static bool IsDead = false;
     public string currentSceneName;
-
+    public TrackedScenes trackedScenes = new TrackedScenes();
+   
     public GameObject GameOver;
 
     public static Vector3 playerLocation;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+
         immune = false;
         // this defines players starting stats:
         // added game modes "Easy, Medium, Hard"
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
         playerLocation = gameObject.transform.position;
         AIDestinationSetter.targetLocation = playerLocation;
         currentSceneName = SceneManager.GetActiveScene().name;
+
     }
 
     // Update is called once per frame
@@ -69,10 +72,10 @@ public class Player : MonoBehaviour
 
                 GetComponent<Animator>().SetBool("takesDamage", true);
                 StartCoroutine(DamageAnimationTimer());
+                FindObjectOfType<AudioManager>().Play("TakeDamage");
             }
             if (currentHealth <= 0)
             {
-                //play death animation
                 //play game over music
 
                 GameOver.gameObject.SetActive(true);
@@ -80,9 +83,6 @@ public class Player : MonoBehaviour
                 IsDead = true;
             }
         }
-        // TODO manan kuluminen
-        // TODO HP saaminen objecteista
-        // TODO manan saaminen objecteista
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -91,7 +91,9 @@ public class Player : MonoBehaviour
         {
             coins = coins + 1;
         }
+        
     }
+
 
     private IEnumerator DamageAnimationTimer()
     {

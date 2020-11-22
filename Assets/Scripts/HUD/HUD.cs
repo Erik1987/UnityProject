@@ -16,14 +16,14 @@ public class HUD : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
 
         var loadInventoryPanel = Resources.Load("Inventory/InventoryPanel");
-        GameObject instantiateInventoryPanel = (GameObject)Instantiate(loadInventoryPanel, new Vector3((float)151.8261, (float)382.8076, (float)0), Quaternion.identity);
-        instantiateInventoryPanel.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform);
-        instantiateInventoryPanel.transform.name = "InventoryPanel";
-        instantiateInventoryPanel.transform.localPosition += Vector3.right;
-        instantiateInventoryPanel.transform.localScale = new Vector3(0.5124438f, 0.81991f, 0.81991f);
-        instantiateInventoryPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3((float)151.8261, (float)382.8076, (float)0);
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(150, 0); // left + bottom
-        instantiateInventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-150, -400); // right + top
+        GameObject inventoryPanel = (GameObject)Instantiate(loadInventoryPanel, new Vector3((float)151.8261, (float)382.8076, (float)0), Quaternion.identity);
+        inventoryPanel.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform);
+        inventoryPanel.transform.name = "InventoryPanel";
+        inventoryPanel.transform.localPosition += Vector3.right;
+        inventoryPanel.transform.localScale = new Vector3(0.5124438f, 0.81991f, 0.81991f);
+        inventoryPanel.GetComponent<RectTransform>().anchoredPosition3D = new Vector3((float)151.8261, (float)382.8076, (float)0);
+        inventoryPanel.GetComponent<RectTransform>().offsetMin = new Vector2(150, 0); // left + bottom
+        inventoryPanel.GetComponent<RectTransform>().offsetMax = new Vector2(-150, -400); // right + top
 
         bool tempbool = false;
         //Find the object you're looking for

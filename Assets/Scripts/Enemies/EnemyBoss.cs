@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,25 +18,30 @@ public class EnemyBoss : MonoBehaviour
     public int currentHealth;
     public Slider healthBar;
 
-    private GameObject fireBall;
-    public float fireBallSpeed = 15;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
     public float AttackDistance;
 
-    private GameObject iceSpear;
-    public float iceBurstSpearSpeed = 12;
-    public int iceBurstSpearCount = 12;
-    public float iceBurstCooldownTime = 1f;
-    public bool iceBurstCooldown = false;
+    private GameObject fireballGO;
+    private GameObject iceSpearGO;
+
+    private Skills skills;
+    private Skill fireball;
+    private Skill iceBurst;
 
     // Start is called before the first frame update
     private void Start()
     {
-        fireBall = Resources.Load<GameObject>("Objects/EnemyFireball");
-        iceSpear = Resources.Load<GameObject>("Objects/EnemyIceSpear");
+        string PATH = Application.streamingAssetsPath + "/SkillStats.json";
+        string data = File.ReadAllText(PATH);
+        SkillStats skillStats = SkillStats.CreateFromJson(data);
+        fireball = skillStats.boss.Find(skill => skill.name == "Fireball");
+        iceBurst = skillStats.boss.Find(skill => skill.name == "Ice Burst");
 
+        fireballGO = Resources.Load<GameObject>("Objects/EnemyFireBall");
+        iceSpearGO = Resources.Load<GameObject>("Objects/EnemyIceSpear");
+        skills = GetComponent<Skills>();
         rb = this.GetComponent<Rigidbody2D>();
 
         if (playerObj == null)
@@ -64,7 +70,7 @@ public class EnemyBoss : MonoBehaviour
 
         healthBar.value = currentHealth;
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
             Destroy(GameObject.FindGameObjectWithTag("hpslider"));
@@ -72,39 +78,34 @@ public class EnemyBoss : MonoBehaviour
 
         if (timeBtwShots <= 0)
         {
+            // Fireball
             Vector2 targetDirection = Player.playerLocation - transform.position;
             targetDirection.Normalize();
-            float textureAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
 
-            GameObject newEnemyFire = Instantiate(fireBall, transform.position, Quaternion.Euler(0, 0, textureAngle));
-            newEnemyFire.GetComponent<Rigidbody2D>().velocity = targetDirection * fireBallSpeed;
-            Destroy(newEnemyFire, 2f);
-
+            skills.ShootProjectilesInCone(
+                fireballGO,
+                transform.position,
+                targetDirection,
+                fireball.projectileSpeed,
+                fireball.projectileCount,
+                fireball.projectileSpread,
+                fireball.projectileScale
+                );
+            FindObjectOfType<AudioManager>().Play("bossfireball");
             timeBtwShots = startTimeBtwShots;
         }
-        else if (Vector2.Distance(Player.playerLocation, transform.position) > AttackDistance && !iceBurstCooldown)
+        else if (Vector2.Distance(Player.playerLocation, transform.position) > AttackDistance && !iceBurst.cooldown)
         {
+            // Ice Burst
             StartCoroutine(IceBurstCooldown());
-
-            float angleStep = 360f / iceBurstSpearCount;
-            float angle = 0f;
-            Vector2 pos = Camera.main.WorldToScreenPoint(transform.position);
-
-            for (int i = 0; i < iceBurstSpearCount; i++)
-            {
-                float dirX = pos.x + Mathf.Sin(angle * Mathf.PI / 180);
-                float dirY = pos.y + Mathf.Cos(angle * Mathf.PI / 180);
-
-                Vector2 iceSpearV = new Vector2(dirX, dirY);
-                Vector2 iceSpearDir = (iceSpearV - pos).normalized;
-
-                float textureAngle = Mathf.Atan2(iceSpearDir.y, iceSpearDir.x) * Mathf.Rad2Deg;
-                GameObject newEnemyIceSpear = Instantiate(iceSpear, transform.position, Quaternion.Euler(0, 0, textureAngle));
-
-                newEnemyIceSpear.GetComponent<Rigidbody2D>().velocity = new Vector2(iceSpearDir.x, iceSpearDir.y) * iceBurstSpearSpeed;
-
-                angle += angleStep;
-            }
+            skills.ShootProjectilesInCircle(
+                iceSpearGO,
+                transform.position,
+                iceBurst.projectileSpeed,
+                iceBurst.projectileCount,
+                iceBurst.projectileScale
+                );
+                FindObjectOfType<AudioManager>().Play("bossiceburst");
         }
         else
         {
@@ -113,9 +114,9 @@ public class EnemyBoss : MonoBehaviour
 
         IEnumerator IceBurstCooldown()
         {
-            iceBurstCooldown = true;
-            yield return new WaitForSeconds(iceBurstCooldownTime);
-            iceBurstCooldown = false;
+            iceBurst.cooldown = true;
+            yield return new WaitForSeconds(iceBurst.cooldownTime);
+            iceBurst.cooldown = false;
         }
     }
 

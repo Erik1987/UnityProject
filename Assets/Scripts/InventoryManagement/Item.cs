@@ -34,7 +34,6 @@ public class Item
         this.storage = storage;
         this.cost = cost;
     }
-
     public string ToString()
     {
         return id + ", " + location + ", "+ name + ", " + type + ", " + damage + ", " 

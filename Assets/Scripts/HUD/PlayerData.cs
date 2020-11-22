@@ -11,6 +11,7 @@ public class PlayerData
     public int gold;
     public float[] position; // transforming vector3 position to array, because of unity policy for non serializable vector3
 
+
     public PlayerData(Player player)
     {
         sceneName = player.currentSceneName;

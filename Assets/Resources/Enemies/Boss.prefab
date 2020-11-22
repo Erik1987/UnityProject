@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -152876755772357682}
   - component: {fileID: 1834272292018423229}
   - component: {fileID: 4793564861753865208}
+  - component: {fileID: 6744483824565001435}
+  - component: {fileID: 4458513106614601910}
   m_Layer: 10
   m_Name: Boss
   m_TagString: enemy
@@ -249,7 +251,7 @@ MonoBehaviour:
   moveSpeed: 3
   animator: {fileID: 6872484545149231572}
   currentHealth: 15
-  healthBar: {fileID: 7937932606959516779, guid: 3b5306a85c84f464b85b0fa46ef60717, type: 3}
+  healthBar: {fileID: 2824878731515427116, guid: 20fe92e2e8d6ece43a79ed4bacee5866, type: 3}
   fireBallSpeed: 15
   startTimeBtwShots: 2
   AttackDistance: 8
@@ -257,3 +259,31 @@ MonoBehaviour:
   iceBurstSpearCount: 12
   iceBurstCooldownTime: 1
   iceBurstCooldown: 0
+--- !u!58 &6744483824565001435
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872484545149231574}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02558875, y: -0.012796998}
+  serializedVersion: 2
+  m_Radius: 0.992424
+--- !u!114 &4458513106614601910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872484545149231574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df15b019c2c93e4e8b8d588053508d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 public class Enemy_RangedNinja : MonoBehaviour
 {
@@ -15,16 +16,23 @@ public class Enemy_RangedNinja : MonoBehaviour
     private Enemy enemy = null;
 
     private GameObject kunai;
-    public float projectileSpeed = 15;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
 
+    private Skills skills;
+    private Skill ninjaKnife;
+
     // Start is called before the first frame update
     private void Start()
     {
-        kunai = Resources.Load<GameObject>("Objects/EnemyKunai");
+        string PATH = Application.streamingAssetsPath + "/SkillStats.json";
+        string data = File.ReadAllText(PATH);
+        SkillStats skillStats = SkillStats.CreateFromJson(data);
+        ninjaKnife = skillStats.rangedNinja.Find(skill => skill.name == "Ninja Knife");
 
+        kunai = Resources.Load<GameObject>("Objects/EnemyKunai");
+        skills = GetComponent<Skills>();
         rb = this.GetComponent<Rigidbody2D>();
 
         if (playerObj == null)
@@ -62,18 +70,21 @@ public class Enemy_RangedNinja : MonoBehaviour
         {
             UnityEngine.Debug.Log("DIE!!!!!");
             Instantiate(deathParticle, enemyObj.transform.position, enemyObj.transform.rotation);
+            FindObjectOfType<AudioManager>().Play("EnemyDeath");
         }
 
         if (timeBtwShots <= 0)
         {
+            // Kitchen knife
             Vector2 targetDirection = Player.playerLocation - transform.position;
             targetDirection.Normalize();
-            float textureAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-
-            GameObject newEnemyProjectile = Instantiate(kunai, transform.position, Quaternion.Euler(0, 0, textureAngle));
-            newEnemyProjectile.GetComponent<Rigidbody2D>().velocity = targetDirection * projectileSpeed;
-            Destroy(newEnemyProjectile, 2f);
-
+            skills.ShootProjectileInDirection(
+                kunai,
+                transform.position,
+                targetDirection,
+                ninjaKnife.projectileSpeed
+                );
+            FindObjectOfType<AudioManager>().Play("enemyknives");
             timeBtwShots = startTimeBtwShots;
         }
         else
