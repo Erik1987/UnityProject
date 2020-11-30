@@ -34,8 +34,7 @@ public class Inventory : MonoBehaviour
     private int itemsCount = 0;
     public static bool destroyBool = false;
     private bool resetCompleted = false;
-    private bool addAllToInstantiate = false;
-    private bool addOneToInstantiate = false;
+    public bool negativeValue = false;
     public int uniqueShopID { get; set; }
 
 
@@ -244,39 +243,48 @@ public class Inventory : MonoBehaviour
             coinObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Tommi's famous quotes: \"Valtteri why you broke the game?\" ";
         }
     }
+
+    public bool inventoryFull = false;
     public void AddItemsToList()
     {
+        int count = 0;
         int id = 0;
         bool query = false;
-        addAllToInstantiate = true;
+        bool addOne = false;
 
         if (resetCompleted == true)
         {
             inventoryDB = new InventoryDatabase();
             inventoryDB.ReadJsonData();
-            addAllToInstantiate = true;
-            addOneToInstantiate = false;
         }
+
         foreach (var item in inventoryDB.items)
         {
             id = item.id;
+
             Item checkItemsInStorage = inventoryDB.FetchItemByID(id);
 
-            if (checkItemsInStorage.storage > 1 && checkItemsInStorage.id != -3 && checkItemsInStorage.id != -2)
+            if (checkItemsInStorage.storage > 1 && checkItemsInStorage.id != -3 && checkItemsInStorage.id != -2 && count < slotAmount)
             {
                 for (int i = 0; i < checkItemsInStorage.storage; i++)
                 {
                     InstantiateAddedItems(checkItemsInStorage.id);
+                }
+                count++;
+                query = true;
+            }
+            if (checkItemsInStorage.storage == 1 && checkItemsInStorage.id != -3 && checkItemsInStorage.id != -2 && count < slotAmount)
+            {
+                for (int i = 0; i < checkItemsInStorage.storage; i++)
+                {
+                    InstantiateAddedItems(checkItemsInStorage.id);
+                    count++;
                 }
                 query = true;
             }
-            if (checkItemsInStorage.storage == 1 && checkItemsInStorage.id != -3 && checkItemsInStorage.id != -2)
+            if (count == slotAmount)
             {
-                for (int i = 0; i < checkItemsInStorage.storage; i++)
-                {
-                    InstantiateAddedItems(checkItemsInStorage.id);
-                }
-                query = true;
+                inventoryFull = true;
             }
 
         }
@@ -316,7 +324,7 @@ public class Inventory : MonoBehaviour
                     data.amount++;
                     data.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.amount.ToString();
                     }
-                    if (resetCompleted == true && itemToAdd.name == gameObjects[i].name)
+                    if (resetCompleted == true && itemToAdd.name == gameObjects[i].name && negativeValue == true)
                     {
                         GameObject go = gameObjects[i];
                         go.GetComponent<ItemData>().amount = data.amount;

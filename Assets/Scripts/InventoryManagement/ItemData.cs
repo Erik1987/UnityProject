@@ -1,10 +1,14 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //[RequireComponent(typeof(Image))]
-public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,
+public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,
     IPointerExitHandler
 {
     //[SerializeField] private Canvas canvas; // = GameObject.Find();
@@ -19,9 +23,14 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private Inventory inv;
     private float scaleFactor = 1.0f, width1, height1, width2, height2;
     private Tooltip tooltip;
+    InventoryDatabase idb = new InventoryDatabase();
+    private string selectedLocation = "";
+    private bool selectComplete = false;
+    public bool isCoroutineReady { get; set; }
 
     // needs to disable ranged attack
     public bool enableRangedAttack = true;
+    public int onlyFirstCounts = 0;
 
     private void Start()
     {
@@ -35,8 +44,49 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup = GetComponent<CanvasGroup>();
         width1 = Screen.width;
         height1 = Screen.height;
-        
+    }
+    private void Update()
+    {
+        OnScrollWorld();
 
+        if (isCoroutineReady)
+        {
+            StartCoroutine(FadeSelection());
+            isCoroutineReady = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) && selectable != false)
+        {
+            var gol = GameObject.FindGameObjectsWithTag("slot");
+            if (true)
+            {    
+            gol[finalPos].GetComponent<Image>().color = new Color32(92, 219, 36, 255);
+                if (gol[finalPos].transform.GetChild(0).childCount > 1)
+                {
+                    var go = gol[finalPos].transform.GetChild(0).GetChild(1).gameObject;
+                    selectedLocation = go.GetComponent<ItemData>().item.location;
+                    selectComplete = false;
+                    selectable = false;
+                    RemoveItem();
+                }
+            }
+        }
+
+    }
+    private void RemoveItem()
+    {
+        idb.OnChange(selectedLocation, -1);
+        selectable = false;
+    }
+    private bool doOnce = false;
+    public int finalFadeCounter = 0;
+    private IEnumerator FadeSelection()
+    {
+        yield return new WaitForSeconds(5);
+        var gol = GameObject.FindGameObjectsWithTag("slot");
+        gol[finalPos].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+        selectable = false;
+        selectComplete = true;
     }
     private bool ItemIsValid()
     {
@@ -52,10 +102,6 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             scaleFactor = ((width2 / width1) + (height2 / height1)) / 2;   
         }
-    }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        enableRangedAttack = true;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -201,5 +247,64 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerExit(PointerEventData eventData)
     {
         tooltip.Deactivate();
-    } 
+    }
+
+
+
+    public int selectPos { get; set; }
+    public int finalPos { get; set; }
+    public bool selectable = false;
+    public int finalScrollCounter = 0;
+    public void OnScrollWorld()
+    {
+        var lastPos = 0;
+        bool selectionIsActive = false;
+        var tempslots = GameObject.FindGameObjectsWithTag("slot");
+        // Hexadesimal value: 5CDB24 or RGBA: 92, 219, 36, 255 
+        // Default value should be hexa value F5AC00 or RGBA: 245, 172, 0, 255
+        Input.GetAxis("Mouse ScrollWheel"); 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            finalScrollCounter++;
+                selectionIsActive = true;
+            if (selectPos > 0 && selectPos < tempslots.Length)
+            {
+                tempslots[selectPos-1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+            }
+                if (selectPos < tempslots.Length && selectPos >= 0)
+                {
+                    tempslots[selectPos].GetComponent<Image>().color = new Color(92, 219, 36, 255);
+                    finalPos = selectPos;
+                    selectable = true;
+                    isCoroutineReady = true;
+                    selectPos++;
+                    lastPos = selectPos;
+                }
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            finalScrollCounter++;
+            if (lastPos > 0 && selectionIsActive == true)
+            {
+                selectPos = lastPos - 1;
+            }
+            if (selectPos > 0 && selectPos <= tempslots.Length)
+            {
+                tempslots[selectPos-1].GetComponent<Image>().color = new Color(92, 219, 36, 255);
+                finalPos = selectPos - 1;
+                isCoroutineReady = true;
+                selectable = true;
+                selectPos--;
+            }
+            if (selectPos < tempslots.Length && selectPos >= 0 && selectPos != tempslots.Length-1)
+            {
+                tempslots[selectPos+1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+            }
+            if (selectPos < 0)
+            {
+                selectPos = 0;
+            }
+        }
+    }
 }

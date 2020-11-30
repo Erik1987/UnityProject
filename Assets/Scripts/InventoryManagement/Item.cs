@@ -4,11 +4,8 @@ public class Item
     public int id;
     public string location;
     public string name;
-    public string type; 
-    public int damage;
-    public int defence;
-    public int consumption;
-    public int gain;
+    public string type;
+    public string description;
     public bool stackable;
     public int storage;
     public int cost;
@@ -19,25 +16,19 @@ public class Item
         this.id = -1;
     }
     // constructor with parameters for an item
-    public Item(int id, string location, string name, string type, int damage, int defence, int consumption, 
-        int gain, bool stackable, int storage, int cost)
+    public Item(int id, string location, string name, string type, string description, bool stackable, int storage)
     {
         this.id = id;
         this.location = location;
         this.name = name;
         this.type = type;
-        this.damage = damage;
-        this.defence = defence;
-        this.consumption = consumption;
-        this.gain = gain;
+        this.description = description;
         this.stackable = stackable;
         this.storage = storage;
-        this.cost = cost;
     }
     public string ToString()
     {
-        return id + ", " + location + ", "+ name + ", " + type + ", " + damage + ", " 
-            + defence + ", "+ consumption + ", " + gain + ", " + stackable +", " +storage + ", " +cost;
+        return id + ", " + location + ", "+ name + ", " + type + ", " + description + ", " + stackable +", " +storage;
     }
 }
 

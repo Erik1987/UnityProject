@@ -37,15 +37,8 @@ public class Tooltip : MonoBehaviour
     {
         if (item.type != "" && item.id != -3) ;
         {
-            data = "<color=#f2f9f9><b>" + item.name + "</b></color>" + "\n<color=#f2f9f9>Type: " + item.type + "</color>" 
-                + "\n<color=#dd2d08>Damage: + " + item.damage + "</color>" + "\n<color=#2de005>Defence: + " + item.defence + "</color>" 
-                + "\n<color=#dd2d08>AP: - " + item.consumption + "</color>" + "\n<color=#2de005> Gain: + " + item.gain + "</color>" 
-                + "\n<color=#ebcb04>Cost: " + item.cost + "</color>";
-            tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data;
-        }
-        if(item.id == -3)
-        {
-            data = "<color=#f2f9f9><b>" + item.name + "</b></color>" + "\n<color=#ebcb04>Cost: " + item.storage + "</color>";
+            data = "<color=#f2f9f9><b>" + item.name + "</b></color>" + "\n<color=#f2f9f9>Type: " + item.type + "</color>"
+                + "\n<color=#ebb93c>Description: " + item.description + "</color>";
             tooltip.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data;
         }
     }

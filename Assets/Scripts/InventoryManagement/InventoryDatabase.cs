@@ -58,6 +58,10 @@ public class InventoryDatabase : MonoBehaviour
 
                 if (inv)
                 {
+                    if (newAmount < 0)
+                    {
+                        inv.negativeValue = true;
+                    }
                     inv.ResetInventory();
                     inv.AddItemsToList();
                     storageName = "";
@@ -104,8 +108,7 @@ public class InventoryDatabase : MonoBehaviour
    
 
     //AddNewItem(setLocation, setName, setType, setDamage, setDefence, setConsumption, setGain, setStackable, setItemsInStorage, setCost, saveItem);
-    public void AddNewItem(string setLocation, string setName, string setType, int setDamage, int setDefence, int setConsumption
-        , int setGain, bool setStackable, int setItemsInStorage, int setCost, bool saveItem)
+    public void AddNewItem(string setLocation, string setName, string setType, string setDescription, bool setStackable, int setItemsInStorage, bool saveItem)
     {
 
         if (saveItem == true)
@@ -118,8 +121,7 @@ public class InventoryDatabase : MonoBehaviour
         {
             Array.Resize<Item>(ref items, items.Length + 1);
 
-            newItem = new Item((items.Length - 1), setLocation, setName, setType, setDamage, setDefence, setConsumption,
-                setGain, setStackable, setItemsInStorage, setCost);
+            newItem = new Item((items.Length - 1), setLocation, setName, setType, setDescription, setStackable, setItemsInStorage);
             items[items.Length - 1] = newItem;
             Debug.Log("Item :" + items[items.Length - 1].name + " added.");
 
@@ -212,8 +214,16 @@ public class InventoryDatabase : MonoBehaviour
         for (int i = 0; i < items.Count(); i++)
             if (items[i].location == location)
             {
+                if (items[i].storage >= 0)
+                {
                 items[i].storage = items[i].storage + amount;
-                Debug.Log("Item added to inventory or storage changed. ");
+                }
+                if(amount < 0 && items[i].storage < 0)
+                {
+                    items[i].storage = 0;
+                }
+
+                Debug.Log("Item added/removed in inventory. ");
                 return items[i];
 
             }
@@ -228,14 +238,21 @@ public class InventoryDatabase : MonoBehaviour
         if (data != "")
         {
             items = JsonHelper.FromJson<Item>(data);
-            itemsForStorage = JsonHelper.FromJson<Item>(data);
+            ReadJsonDataString();
             int count = items.Length;
             int lastIndex = count - 1;
         }
         return items;
     }
-    void ReadJsonDataString()
+    public Item[] ReadJsonDataString()
     {
-        string data = File.ReadAllText(PATH);
+        var data2 = File.ReadAllText(PATH);
+        if (data2 != "")
+        {
+            itemsForStorage = JsonHelper.FromJson<Item>(data2);
+            int count = items.Length;
+            int lastIndex = count - 1;
+        }
+        return itemsForStorage;
     }
 }

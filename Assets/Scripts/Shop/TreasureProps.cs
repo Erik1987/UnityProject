@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TreasureProps : MonoBehaviour
@@ -48,7 +49,12 @@ public class TreasureProps : MonoBehaviour
                 Destroy(this.gameObject);
                 GameObject.Find("Player").GetComponent<Player>().coins -= price;
                 var split = gameObject.name.Split('(');
+                var player = GameObject.FindGameObjectsWithTag("pelaaja").FirstOrDefault();
+                var inv = player.transform.GetComponentInChildren<Inventory>();
+                if (inv.inventoryFull != true)
+                {
                 inventoryDatabase.OnChange(split[0], 1);
+                }
                 // to use item call it like in below
                 //inventoryDatabase.OnChange(split[0], -1);
 
