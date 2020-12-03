@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //[RequireComponent(typeof(Image))]
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler,
+public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerClickHandler,
     IPointerExitHandler
 {
     //[SerializeField] private Canvas canvas; // = GameObject.Find();
@@ -27,7 +28,6 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private string selectedLocation = "";
     private bool selectComplete = false;
     public bool isCoroutineReady { get; set; }
-
     // needs to disable ranged attack
     public bool enableRangedAttack = true;
     public int onlyFirstCounts = 0;
@@ -45,73 +45,68 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         width1 = Screen.width;
         height1 = Screen.height;
     }
+    private bool test = false;
     private void Update()
     {
-        OnScrollWorld();
+  
 
         if (isCoroutineReady)
         {
-            StartCoroutine(FadeSelection());
             isCoroutineReady = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F) && selectable != false)
-        {
-            var gol = GameObject.FindGameObjectsWithTag("slot");
-            if (true)
-            {    
-            gol[finalPos].GetComponent<Image>().color = new Color32(92, 219, 36, 255);
-                if (gol[finalPos].transform.GetChild(0).childCount > 1)
-                {
-                    var go = gol[finalPos].transform.GetChild(0).GetChild(1).gameObject;
-                    selectedLocation = go.GetComponent<ItemData>().item.location;
-                    selectComplete = false;
-                    selectable = false;
-                    RemoveItem();
-                }
-            }
+            StartCoroutine(FadeSelection());
         }
 
     }
     private void RemoveItem()
     {
+        var gol = GameObject.FindGameObjectsWithTag("slot");
+        // ei toimi jostakin syystä kun on 6 itemiä sloteissa sekä tarkista kaupan toimivuus!!!!!!!!!!!!!!!!!!!!!!!
+        Debug.Log("times removed!");
         idb.OnChange(selectedLocation, -1);
+        if (gol[finalPos].GetComponent<IsSlotActive>().isSlotActive == true)
+        {
+            gol[finalPos - 1].GetComponent<IsSlotActive>().isSlotActive = true;
+        }
         selectable = false;
     }
     private bool doOnce = false;
     public int finalFadeCounter = 0;
+    public bool pass = false;
     private IEnumerator FadeSelection()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5f);
         var gol = GameObject.FindGameObjectsWithTag("slot");
-        gol[finalPos].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+        if (gol[finalPos].GetComponent<IsSlotActive>().isSlotActive == false)
+        {
+            gol[finalPos].GetComponent<Image>().color = new Color32(245, 172, 0, 255); // default
+        }
         selectable = false;
         selectComplete = true;
     }
     private bool ItemIsValid()
     {
         return item.id != -2 && item != null;
-        
+
     }
     private void ifScreenSizeChanges(float x, float y)
     {
         width2 = Screen.width;
         height2 = Screen.height;
-      
+
         if (width2 != x || height2 != y)
         {
-            scaleFactor = ((width2 / width1) + (height2 / height1)) / 2;   
+            scaleFactor = ((width2 / width1) + (height2 / height1)) / 2;
         }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
-        if (ItemIsValid()) 
+
+        if (ItemIsValid())
         {
             enableRangedAttack = false;
             rectTransform.anchoredPosition += eventData.delta;
             canvasGroup.alpha = .6f;
-            canvasGroup.transform.localScale = new Vector3((float)2,(float)2, 1);
+            canvasGroup.transform.localScale = new Vector3((float)2, (float)2, 1);
             canvasGroup.blocksRaycasts = false;
             //Debug.Log("Screen resol: " + Screen.currentResolution);
             //Debug.Log("Camera aspect ratio: " + Camera.main.aspect);
@@ -137,7 +132,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 modifier = 1 + 0.547f;
                 //Debug.Log("Using Free aspect scaling factor");
             }
-            else if(Screen.width == 684 && Screen.height == 547)
+            else if (Screen.width == 684 && Screen.height == 547)
             {
                 screenModifier = 2;
                 modifier = 1 + 0.547f;
@@ -181,7 +176,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             }
             //rectTransform.anchoredPosition += eventData.delta / 1.547f; // rectTransform.localScale; // (float)scaleFactor; //or do  / canvas.scaleFactor;
             switch (screenModifier)
-        {
+            {
                 // for freeaspect = 1280x547
                 case 1:
                     rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
@@ -217,7 +212,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 default:
                     rectTransform.anchoredPosition += new Vector2(eventData.delta.x / 1.5f, eventData.delta.y / 1.5f);
                     break;
-        }
+            }
         }
     }
 
@@ -229,16 +224,16 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             enableRangedAttack = true;
             rectTransform.SetParent(inv.canvases[canv].transform);
             rectTransform.transform.position = inv.canvases[canv].transform.position; // maybe unwanted
-            canvasGroup.transform.localScale = new Vector3((float)1, (float)1, 1); 
+            canvasGroup.transform.localScale = new Vector3((float)1, (float)1, 1);
             vectorPos = ItemSlotDrop.vectorPos;
             rectTransform.anchoredPosition3D = vectorPos;
             canvasGroup.blocksRaycasts = true;
         }
     }
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(ItemIsValid())
+        if (ItemIsValid())
         {
             tooltip.Activate(item);
         }
@@ -257,54 +252,78 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public int finalScrollCounter = 0;
     public void OnScrollWorld()
     {
-        var lastPos = 0;
-        bool selectionIsActive = false;
-        var tempslots = GameObject.FindGameObjectsWithTag("slot");
+
         // Hexadesimal value: 5CDB24 or RGBA: 92, 219, 36, 255 
         // Default value should be hexa value F5AC00 or RGBA: 245, 172, 0, 255
-        Input.GetAxis("Mouse ScrollWheel"); 
+        //Input.GetAxis("Mouse ScrollWheel"); 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
+            var lastPos = 0;
+            var tempslots = GameObject.FindGameObjectsWithTag("slot");
             finalScrollCounter++;
-                selectionIsActive = true;
             if (selectPos > 0 && selectPos < tempslots.Length)
             {
-                tempslots[selectPos-1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+                if (tempslots[selectPos - 1].GetComponent<IsSlotActive>().isSlotActive == false)
+                {
+                    tempslots[selectPos - 1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+                }
             }
-                if (selectPos < tempslots.Length && selectPos >= 0)
+            if (selectPos < tempslots.Length && selectPos >= 0)
+            {
+                if (tempslots[selectPos].GetComponent<IsSlotActive>().isSlotActive == false)
                 {
                     tempslots[selectPos].GetComponent<Image>().color = new Color(92, 219, 36, 255);
-                    finalPos = selectPos;
-                    selectable = true;
-                    isCoroutineReady = true;
-                    selectPos++;
-                    lastPos = selectPos;
                 }
+                finalPos = selectPos;
+                selectable = true;
+                isCoroutineReady = true;
+                selectPos++;
+                lastPos = selectPos;
+                item.isSelected = true;
+            }
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
         {
+            var lastPos = 0;
+            var tempslots = GameObject.FindGameObjectsWithTag("slot");
             finalScrollCounter++;
-            if (lastPos > 0 && selectionIsActive == true)
+            if (lastPos > 0)
             {
                 selectPos = lastPos - 1;
             }
             if (selectPos > 0 && selectPos <= tempslots.Length)
             {
-                tempslots[selectPos-1].GetComponent<Image>().color = new Color(92, 219, 36, 255);
+                if (tempslots[selectPos - 1].GetComponent<IsSlotActive>().isSlotActive == false)
+                {
+                    tempslots[selectPos - 1].GetComponent<Image>().color = new Color(92, 219, 36, 255);
+                }
                 finalPos = selectPos - 1;
                 isCoroutineReady = true;
                 selectable = true;
                 selectPos--;
             }
-            if (selectPos < tempslots.Length && selectPos >= 0 && selectPos != tempslots.Length-1)
+            if (selectPos < tempslots.Length && selectPos >= 0 && selectPos != tempslots.Length - 1)
             {
-                tempslots[selectPos+1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+                if (tempslots[selectPos + 1].GetComponent<IsSlotActive>().isSlotActive == false)
+                {
+                    tempslots[selectPos + 1].GetComponent<Image>().color = new Color32(245, 172, 0, 255);
+                }
             }
             if (selectPos < 0)
             {
                 selectPos = 0;
             }
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+
+        GameObject go = GameObject.Find("Slot_0");
+        go.GetComponent<Image>().color = new Color(92, 219, 36, 255);
+        var name = go.transform.GetChild(1).GetComponent<ItemData>().item.name;
+        Debug.Log("data " + eventData.selectedObject.transform.gameObject.name);
+
     }
 }

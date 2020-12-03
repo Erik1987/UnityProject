@@ -9,7 +9,7 @@ public class Item
     public bool stackable;
     public int storage;
     public int cost;
-   
+    public bool isSelected = false;
     // constructor for empty, used only for testing or delete
     public Item()
     {

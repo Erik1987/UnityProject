@@ -30,6 +30,10 @@ TagManager:
   - item
   - slot_canvas
   - slot
+  - dialogText
+  - dialogBox
+  - SlotPanel
+  - InventoryPanel
   layers:
   - Default
   - TransparentFX

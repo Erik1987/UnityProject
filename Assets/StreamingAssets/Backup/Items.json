@@ -8,7 +8,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": -2,
@@ -18,7 +19,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 0,
@@ -28,7 +30,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 1,
@@ -38,7 +41,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 2,
@@ -48,7 +52,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 3,
@@ -58,7 +63,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 4,
@@ -68,67 +74,74 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 5,
             "location": "magic_book",
-            "name": "Minigun",
-            "type": "Weapon",
-            "description": "Lorem ipsum hippie dippie dooo, jada jada!",
+            "name": "Magic Book",
+            "type": "Book",
+            "description": "Summons traps",
             "stackable": false,
             "storage": 1,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 6,
             "location": "red_running_shoes",
-            "name": "Giant_Axe",
-            "type": "Axe",
-            "description": "What eva",
+            "name": "Running Shoes",
+            "type": "Wearable",
+            "description": "Dash ability - (Space)",
             "stackable": false,
             "storage": 1,
-            "cost": 0
+            "cost": 1,
+            "isSelected": false
         },
         {
             "id": 7,
             "location": "hamburger",
-            "name": "Wooden Shield",
-            "type": "Shield",
-            "description": "What eva",
+            "name": "Hamburger",
+            "type": "Edible",
+            "description": "Eat this and full health restored",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 1,
+            "isSelected": false
         },
         {
             "id": 8,
             "location": "purple_vegetable",
-            "name": "Wooden Shield",
-            "type": "Shield",
-            "description": "What eva",
+            "name": "Vegetable",
+            "type": "Edible",
+            "description": "Eat this and half health restored",
             "stackable": false,
-            "storage": 0,
-            "cost": 0
+            "storage": 1,
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 9,
             "location": "blue_magic_stone",
-            "name": "Wooden Shield",
-            "type": "Shield",
-            "description": "What eva",
+            "name": "Blue Magic Stone",
+            "type": "Rune Stone",
+            "description": "Ice blizzard power",
             "stackable": false,
-            "storage": 0,
-            "cost": 0
+            "storage": 1,
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 10,
             "location": "red_magic_stone",
-            "name": "Wooden Shield",
-            "type": "Shield",
-            "description": "What eva",
+            "name": "Red Magic Stone",
+            "type": "Rune Stone",
+            "description": "More fireball power",
             "stackable": false,
-            "storage": 0,
-            "cost": 0
+            "storage": 1,
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 11,
@@ -138,7 +151,8 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 12,
@@ -148,17 +162,19 @@
             "description": "What eva",
             "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 13,
             "location": "life_large",
             "name": "Large Health Potion",
-            "type": "Shield",
-            "description": "What eva",
-            "stackable": true,
+            "type": "Potion",
+            "description": "Gives 1-2 hearts",
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 14,
@@ -166,9 +182,10 @@
             "name": "Medium Health Potion",
             "type": "Shield",
             "description": "What eva",
-            "stackable": true,
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 15,
@@ -176,9 +193,10 @@
             "name": "Small Health Potion",
             "type": "Shield",
             "description": "What eva",
-            "stackable": true,
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 16,
@@ -186,9 +204,10 @@
             "name": "Large Mana Potion",
             "type": "Shield",
             "description": "What eva",
-            "stackable": true,
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 17,
@@ -196,9 +215,10 @@
             "name": "Medium Mana Potion",
             "type": "Shield",
             "description": "What eva",
-            "stackable": true,
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         },
         {
             "id": 18,
@@ -206,9 +226,10 @@
             "name": "Small Mana Potion",
             "type": "Shield",
             "description": "What eva",
-            "stackable": true,
+            "stackable": false,
             "storage": 0,
-            "cost": 0
+            "cost": 0,
+            "isSelected": false
         }
     ]
 }

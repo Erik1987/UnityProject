@@ -15,6 +15,29 @@ public class HUD : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
 
+        InstantiateInventoryPanel();
+
+        // @test
+        MAX_health = player.currentHealth;
+        MAX_mana = player.currentMana;
+        InstantiateHUDContent(MAX_health, MAX_mana);
+
+    }
+    private void Update()
+    {
+        var tempHealth = player.currentHealth;
+        var tempMana = player.currentMana;
+        if (MAX_health != tempHealth | MAX_mana != tempMana)
+        {
+            MAX_health = tempHealth;
+            MAX_mana = tempMana;
+            DestroyObjectHealthAndMana(index_health, index_mana);
+            InstantiateHUDContent(MAX_health, MAX_mana);
+        }
+    }
+    public void InstantiateInventoryPanel()
+    {
+        
         var loadInventoryPanel = Resources.Load("Inventory/InventoryPanel");
         GameObject inventoryPanel = (GameObject)Instantiate(loadInventoryPanel, new Vector3((float)151.8261, (float)382.8076, (float)0), Quaternion.identity);
         inventoryPanel.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform);
@@ -41,24 +64,6 @@ public class HUD : MonoBehaviour
                 Debug.Log("Could not locate Canvas component on " + tempObject.name);
             }
             tempbool = true;
-        }
-
-        // @test
-        MAX_health = player.currentHealth;
-        MAX_mana = player.currentMana;
-        InstantiateHUDContent(MAX_health, MAX_mana);
-
-    }
-    private void Update()
-    {
-        var tempHealth = player.currentHealth;
-        var tempMana = player.currentMana;
-        if (MAX_health != tempHealth | MAX_mana != tempMana)
-        {
-            MAX_health = tempHealth;
-            MAX_mana = tempMana;
-            DestroyObjectHealthAndMana(index_health, index_mana);
-            InstantiateHUDContent(MAX_health, MAX_mana);
         }
     }
     public void DestroyObjectHealthAndMana(int idx_health, int idx_mana)
@@ -90,7 +95,7 @@ public class HUD : MonoBehaviour
         }
         for (int i = 0; i < MAX_health; i++)
         {
-            GameObject heart = (GameObject)Instantiate(gameObjects[0], new Vector3(((float)(x + -293.34)), (float)136.05, (float)0),
+            GameObject heart = (GameObject)Instantiate(gameObjects[0], new Vector3(((float)(x + -293.34)), (float)156.05, (float)0),
                 Quaternion.identity);
             heart.transform.SetParent(GameObject.FindGameObjectWithTag("HUDcanvas").transform, false);
             heart.transform.localScale = new Vector3((float)1, (float)1, (float)1);
@@ -111,6 +116,7 @@ public class HUD : MonoBehaviour
             //mana.AddComponent<Canvas>();
             //mana.GetComponent<Canvas>().sortingOrder = 32767;
             mana.name = "mana_" + i;
+            mana.GetComponent<Image>().color = new Color32(0,0,0,0);
             mana.SetActive(true);
             y += 20;
             index_mana = i;
