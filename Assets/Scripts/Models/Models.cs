@@ -14,6 +14,8 @@ namespace Assets.Scripts
                 SmallRock2Vectors = new List<Vector2>();
                 EnemyMeleeVectors = new List<Vector2>();
                 EnemyRangedVectors = new List<Vector2>();
+                EnemySuperVectors = new List<Vector2>();
+                LakeVectors = new List<Vector2>();
             }
 
             public List<Vector2> BigRockVectors { get; set; }
@@ -21,6 +23,9 @@ namespace Assets.Scripts
             public List<Vector2> SmallRock2Vectors { get; set; }
             public List<Vector2> EnemyMeleeVectors { get; set; }
             public List<Vector2> EnemyRangedVectors { get; set; }
+            public List<Vector2> EnemySuperVectors { get; set; }
+            public List<Vector2> LakeVectors { get; set; }
+
         }
     }
 }

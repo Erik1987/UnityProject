@@ -12,38 +12,42 @@
             "distance": 0,
             "duration": 0,
             "cooldown": false,
-            "cooldownTime": 0
+            "cooldownTime": 0,
+            "activated": false
         },
         {
             "id": 1,
             "name": "Fireball",
-            "projectileSpeed": 12.0,
-            "projectileCount": 5,
-            "projectileSpread": 20.0,
+            "projectileSpeed": 8.0,
+            "projectileCount": 1,
+            "projectileSpread": 22.0,
             "projectileWaves": 1,
             "projectileScale": 0.7,
             "cooldown": false,
-            "cooldownTime": 0.2
+            "cooldownTime": 0.2,
+            "activated": true
         },
         {
             "id": 2,
             "name": "Ice Burst",
             "projectileSpeed": 12.0,
-            "projectileCount": 12,
+            "projectileCount": 5,
             "projectileScale": 0.5,
             "cooldown": false,
-            "cooldownTime": 1.0
+            "cooldownTime": 1.0,
+            "activated": false
         },
         {
             "id": 3,
             "name": "Ice Spiral",
             "projectileSpeed": 12.0,
-            "projectileCount": 18,
+            "projectileCount": 10,
             "projectileWaves": 2,
-            "projectileFrequence": 0.05,
+            "projectileFrequence": 0.25,
             "projectileScale": 0.5,
             "cooldown": false,
-            "cooldownTime": 3.0
+            "cooldownTime": 5.0,
+            "activated": false
         },
         {
             "id": 4,
@@ -51,14 +55,16 @@
             "projectileCount": 3,
             "duration": 2.0,
             "cooldown": false,
-            "cooldownTime": 2.0
+            "cooldownTime": 5.0,
+            "activated": false
         },
         {
             "id": 5,
             "name": "Dash",
-            "distance": 3.0,
+            "distance": 4.0,
             "cooldown": false,
-            "cooldownTime": 1.0
+            "cooldownTime": 1.0,
+            "activated": false
         }
 
     ],
@@ -73,16 +79,16 @@
         {
             "id": 1,
             "name": "Fireball",
-            "projectileSpeed": 5.0,
+            "projectileSpeed": 7.0,
             "projectileCount": 7,
-            "projectileSpread": 12.0,
+            "projectileSpread": 27.0,
             "projectileScale": 1.5
         },
         {
             "id": 2,
             "name": "Ice Burst",
             "projectileSpeed": 8.0,
-            "projectileCount": 12,
+            "projectileCount": 13,
             "projectileScale": 0.7,
             "cooldown": false,
             "cooldownTime": 1.2

@@ -76,7 +76,32 @@ public class Player : MonoBehaviour
             }
             if (currentHealth <= 0)
             {
-                //play game over music
+                FindObjectOfType<AudioManager>().Stop("EndMusic");
+                FindObjectOfType<AudioManager>().Stop("bossmusic");
+                FindObjectOfType<AudioManager>().Stop("Theme");
+                FindObjectOfType<AudioManager>().Play("gameover");
+                GameOver.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                IsDead = true;
+            }
+        }
+        else if (collision.gameObject.tag == "super-enemy")
+        {
+            if (!immune)
+            {
+                immune = true;
+                currentHealth -= 2;
+
+                GetComponent<Animator>().SetBool("takesDamage", true);
+                StartCoroutine(DamageAnimationTimer());
+                FindObjectOfType<AudioManager>().Play("TakeDamage");
+            }
+            if (currentHealth <= 0)
+            {
+
+                FindObjectOfType<AudioManager>().Play("gameover");
+                FindObjectOfType<AudioManager>().Stop("Theme");
+                FindObjectOfType<AudioManager>().Stop("bossmusic");
 
                 GameOver.gameObject.SetActive(true);
                 Time.timeScale = 0;
@@ -85,22 +110,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Coin"))
-        {
-            coins = coins + 1;
-        }
-        
-    }
-
-
     private IEnumerator DamageAnimationTimer()
     {
         yield return new WaitForSeconds(1);
         GetComponent<Animator>().SetBool("takesDamage", false);
         immune = false;
     }
+    /*
     public void Save()
     {
         SaveSystem.SavePlayer(this);
@@ -123,4 +139,5 @@ public class Player : MonoBehaviour
 
         Debug.Log("Player Loaded ");
     }
+    */
 }

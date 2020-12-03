@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts;
-using Assets.Scripts.Player;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -16,9 +15,10 @@ public class RoomGenerator : MonoBehaviour
     public readonly List<GameObject> tiles = new List<GameObject>();
     private int roomSizeX;
     private int roomSizeY;
-
+    private int roomCount;
     public async Task StartGame(int sceneAmount, int roomMaxSizeX, int roomMaxSizeY, int roomMinSizeY, int roomMinSizeX)
     {
+        roomCount = sceneAmount;
         for (int i = 0; i < sceneAmount; i++)
         {
             roomSizeX = new System.Random().Next(roomMinSizeY, roomMaxSizeX);
@@ -67,10 +67,12 @@ public class RoomGenerator : MonoBehaviour
                         {
                             player.transform.position = spawnDown.gameObject.transform.position;
                         }
-                        else if(scene2.name == "bossHuone")
+                        else if (scene2.name == "bossHuone")
                         {
                             var bossRoomSpawn = scene2.GetRootGameObjects().Where(s => s.name == "SpawnDown").FirstOrDefault().transform;
                             player.transform.position = bossRoomSpawn.position;
+                            FindObjectOfType<AudioManager>().Stop("Theme");
+                            FindObjectOfType<AudioManager>().Play("bossmusic");
                         }
                         else if (scene1.name == "mainMenu" && scene2.name == "First Room")
                         {
@@ -80,18 +82,23 @@ public class RoomGenerator : MonoBehaviour
                         {
                             // TODO thingy
                         }
-                        else if(scene1.name == "bossHuone")
+                        else if (scene1.name == "bossHuone")
                         {
                             player.transform.position = spawnDown.gameObject.transform.position;
+                            FindObjectOfType<AudioManager>().Stop("bossmusic");
                         }
                         else if (scene1.name == "Shop")
                         {
                             var spawnLeft = scene2.GetRootGameObjects().FirstOrDefault().transform.Find("SpawnLeft");
                             player.transform.position = spawnLeft.gameObject.transform.position;
+                            FindObjectOfType<AudioManager>().Stop("ShopMusic");
+                            FindObjectOfType<AudioManager>().Play("Theme");
                         }
                         else if (scene2.name == "Shop")
                         {
                             player.transform.position = spawnDown.gameObject.transform.position;
+                            FindObjectOfType<AudioManager>().Stop("Theme");
+                            FindObjectOfType<AudioManager>().Play("ShopMusic");
                         }
                         else
                         {
@@ -171,6 +178,20 @@ public class RoomGenerator : MonoBehaviour
                     randomObjectVectors.EnemyRangedVectors.Add(new Vector2(randomX5, randomY5));
                     tempVectors.Add(new Vector2(randomX5, randomY5));
                 }
+
+                var randomX6 = Random.Range(0, roomSizeX * tileSize - 1);
+                var randomY6 = Random.Range(0, roomSizeY * -tileSize);
+                if (!tempVectors.Contains(new Vector2(randomX6, randomY6)))
+                {
+                    randomObjectVectors.EnemySuperVectors.Add(new Vector2(randomX6, randomY6));
+                    tempVectors.Add(new Vector2(randomX6, randomY6));
+                }
+
+                var randomX7 = Random.Range(0, roomSizeX * tileSize - 1);
+                var randomY7 = Random.Range(0, roomSizeY * -tileSize);
+
+                randomObjectVectors.LakeVectors.Add(new Vector2(randomX7, randomY7));
+                tempVectors.Add(new Vector2(randomX7, randomY7));
             }
         }
         return randomObjectVectors;
@@ -214,9 +235,9 @@ public class RoomGenerator : MonoBehaviour
             {
                 int posX = col * tileSize;
                 int posY = row * -tileSize;
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "S", floorNumber));
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "N", floorNumber));
-                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "L", floorNumber));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "S", floorNumber, roomCount));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "N", floorNumber, roomCount));
+                vectorsAroundSpawn.AddRange(ObjectGenerators.GenerateDoors(tiles, tileSize, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom, "L", floorNumber, roomCount));
 
                 ObjectGenerators.GenerateCorners(tiles, col, row, roomSizeY, roomSizeX, posX, posY, setConstantObjects, staticGameObjects, vectors, tempRoom);
                 ObjectGenerators.GenerateWalls(tiles, col, row, roomSizeY, roomSizeX, posX, posY, staticGameObjects, vectors, tempRoom);
@@ -245,9 +266,34 @@ public class RoomGenerator : MonoBehaviour
         }
 
         #region SmallObjects
+
         var meleeEnemyCount = 0;
         var rangeEnemyCount = 0;
+        var superEnemyCount = 0;
         // TODO create more generic way of creating objects. ForEach loop for every item is not very efficient.
+        var random = Random.Range(0, 3);
+        foreach (var vector in randomObjectVectors.LakeVectors)
+        {
+            switch (random)
+            {
+                case 1:
+                    ObjectGenerators.GenerateLake1(vector, tiles, staticGameObjects, tempRoom, setConstantObjects);
+                    break;
+
+                case 2:
+                    ObjectGenerators.GenerateLake2(vector, tiles, staticGameObjects, tempRoom, setConstantObjects);
+                    break;
+
+                case 3:
+                    ObjectGenerators.GenerateLake3(vector, tiles, staticGameObjects, tempRoom, setConstantObjects);
+                    break;
+
+                default:
+                    ObjectGenerators.GenerateLake3(vector, tiles, staticGameObjects, tempRoom, setConstantObjects);
+                    break;
+            }
+        }
+
         foreach (var vector in randomObjectVectors.SmallRock1Vectors)
         {
             ObjectGenerators.GenerateSmallRock1(vector, tiles, staticGameObjects, tempRoom, vectorsAroundSpawn);
@@ -260,9 +306,10 @@ public class RoomGenerator : MonoBehaviour
         {
             ObjectGenerators.GenerateBigRock(vector, tiles, staticGameObjects, tempRoom, vectorsAroundSpawn);
         }
+
         foreach (var vector in randomObjectVectors.EnemyMeleeVectors)
         {
-            if(difficulty > meleeEnemyCount * 1.5)
+            if (difficulty > meleeEnemyCount * 1.5)
             {
                 ObjectGenerators.GenerateMeleeEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
                 meleeEnemyCount++;
@@ -276,9 +323,18 @@ public class RoomGenerator : MonoBehaviour
                 rangeEnemyCount++;
             }
         }
+        foreach (var vector in randomObjectVectors.EnemySuperVectors)
+        {
+            if (difficulty > superEnemyCount * 2.5)
+            {
+                ObjectGenerators.GenerateSuperEnemy(tempRoom, tiles, enemyGameObjects, difficulty, vector);
+                superEnemyCount++;
+            }
+        }
 
         #endregion SmallObjects
 
+        tempRoom.transform.position = new Vector3 { x = 0, y = 0, z = 0 };
         return tempRoom;
     }
 }

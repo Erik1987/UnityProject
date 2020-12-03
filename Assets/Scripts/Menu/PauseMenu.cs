@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
-
+    /*
     public void Save()
     {
         pauseMenu.SetActive(false);
@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         IsPaused = false;
         loaded = true;
-    }
+    } */
     public void Resume()
     {
         pauseMenu.SetActive(false);

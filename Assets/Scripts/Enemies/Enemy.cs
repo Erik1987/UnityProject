@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 
                 GetComponent<Animator>().SetBool("takesDamage", true);
                 StartCoroutine(DamageAnimationTimer());
+                FindObjectOfType<AudioManager>().Play("EnemyDamage");
             }
             //ShowTweetAndRemoveFromPoolAfterUse();
         }
@@ -98,7 +99,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(coinDrop, transform.position, Quaternion.identity);
         }
-        else if (randomNumber >= 98 && note0hasSpawned == false)
+        else if (randomNumber == 99 && note0hasSpawned == false)
         {
             noteNum = 0;
             Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
@@ -106,7 +107,7 @@ public class Enemy : MonoBehaviour
             UnityEngine.Debug.Log("Note 1 found!");
 
         }
-        else if (randomNumber < 98 && randomNumber >= 96 && note1hasSpawned == false)
+        else if (randomNumber == 98 && note1hasSpawned == false)
         {
             noteNum = 1;
             Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
@@ -114,7 +115,7 @@ public class Enemy : MonoBehaviour
             UnityEngine.Debug.Log("Note 2 found!");
 
         }
-        else if (randomNumber < 96 && randomNumber >= 94 && note2hasSpawned == false)
+        else if (randomNumber == 97 && note2hasSpawned == false)
         {
             noteNum = 2;
             Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
@@ -122,7 +123,7 @@ public class Enemy : MonoBehaviour
             UnityEngine.Debug.Log("Note 3 found!");
 
         }
-        else if (randomNumber < 94 && randomNumber >= 92 && note3hasSpawned == false)
+        else if (randomNumber == 96 && note3hasSpawned == false)
         {
             noteNum = 3;
             Instantiate(noteList[noteNum], transform.position, Quaternion.identity);
@@ -130,7 +131,7 @@ public class Enemy : MonoBehaviour
             UnityEngine.Debug.Log("Note 4 found!");
 
         }
-        else if (randomNumber < 92 && randomNumber >= 90 && note4hasSpawned == false)
+        else if (randomNumber == 95 && note4hasSpawned == false)
         {
             noteNum = 4;
             Instantiate(noteList[noteNum], transform.position, Quaternion.identity);

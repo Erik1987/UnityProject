@@ -26,10 +26,12 @@ namespace Assets.Scripts
 
         public static void GenerateSmallRock1(Vector2 vector, List<GameObject> tiles, List<GameObject> gameObjects, GameObject tempRoom, List<Vector2> vectorsAroundSpawn)
         {
+
             if (!vectorsAroundSpawn.Contains(new Vector2(vector.x, vector.y)))
             {
                 tiles[0] = Instantiate(gameObjects.FirstOrDefault(s => s.name.StartsWith("SmallRock1")), tempRoom.transform);
                 tiles[0].transform.position = new Vector2(vector.x, vector.y);
+
             }
         }
 
@@ -74,6 +76,56 @@ namespace Assets.Scripts
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("TopRightCorner9")), tempRoom.transform);
                 vectors.Add(tiles[8].transform.localPosition = new Vector2(posX + 3f, posY + 1f));
                 setConstantObjects.Add("topRightCornerSet", true);
+
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 3f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 2f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 1f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 1f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 2f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 3f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 4f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 5f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 6f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 7f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 8f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 9f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 10f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 11f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 12f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 16f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 17f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 18f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 19f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 20f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 21f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 22f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 23f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 24f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 25f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 26f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 27f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 28f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 29f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 30f, posY + 3f);
+
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY + 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY + 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY + 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY - 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY - 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY - 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY - 4f);
+
+
             }
             // Right bot corner
             if (col == roomY && row == roomX && !setConstantObjects.ContainsKey("botRightCornerSet"))
@@ -105,6 +157,51 @@ namespace Assets.Scripts
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BotRightCorner9")), tempRoom.transform);
                 vectors.Add(tiles[8].transform.localPosition = new Vector2(posX + 3f, posY - 1f));
                 setConstantObjects.Add("botRightCornerSet", true);
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 1, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 1f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 2f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 3f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 3f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 5f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 6f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 7f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 8f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 9f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 10f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 11f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 12f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 13f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 16f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 17f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 18f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 19f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 20f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 21f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 22f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 23f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 24f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 25f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 26f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 27f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 28f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 29f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 30f, posY - 18f);
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 5f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 6f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 7f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 8f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 9f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 10f);
+
             }
             //Left top corner
             if (col == 0 && !setConstantObjects.ContainsKey("topLeftCornerSet"))
@@ -136,8 +233,62 @@ namespace Assets.Scripts
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("TopLeftCorner9")), tempRoom.transform);
                 vectors.Add(tiles[8].transform.localPosition = new Vector2(posX - 3f, posY + 1f));
                 setConstantObjects.Add("topLeftCornerSet", true);
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 1, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 1f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 2f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 3f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 3f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 4f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 5f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 6f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 7f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 8f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 9f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 10f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 11f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 12f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 13f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 14f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 15f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 16f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 17f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 18f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 19f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 20f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 21f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 24f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 25f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 26f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 27f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 28f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 29f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 30f, posY + 3f);
+
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 3);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 5f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 6f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 7f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 8f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 9f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 10f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 11f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 12f);
             }
-            // Left bot corner
+            //Left bot corner
             if (col == 0 && row == roomX && !setConstantObjects.ContainsKey("botLeftCornerSet"))
             {
                 tiles[0] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BotLeftCorner1")), tempRoom.transform);
@@ -167,6 +318,52 @@ namespace Assets.Scripts
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BotLeftCorner9")), tempRoom.transform);
                 vectors.Add(tiles[8].transform.localPosition = new Vector2(posX - 3f, posY - 1f));
                 setConstantObjects.Add("botLeftCornerSet", true);
+
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 1, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 1f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 2f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 3f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 3f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 4f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 5f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 6f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 7f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 8f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 9f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 10f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 11f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 12f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 13f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 14f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX + 14f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 15f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 16f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 17f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 18f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 19f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 20f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 21f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 24f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 25f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 26f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 27f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 28f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 29f, posY - 18f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX - 30f, posY - 18f);
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 2);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY - 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 23f, posY + 4f);
             }
         }
 
@@ -194,7 +391,45 @@ namespace Assets.Scripts
             enemyNumber++;
         }
 
-        public static List<Vector2> GenerateDoors(List<GameObject> tiles, int tileSize, int col, int row, int roomY, int roomX, int posX, int posY, Dictionary<string, bool> setConstantObjects, List<GameObject> gameobjects, List<Vector2> vectors, GameObject tempRoom, string doorDirection, int floorNumber)
+        internal static void GenerateSuperEnemy(GameObject tempRoom, List<GameObject> tiles, List<GameObject> gameobjects, int difficulty, Vector2 vector)
+        {
+            tiles[0] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("EnemySpawn")), tempRoom.transform);
+            tiles[0].name = $"{tiles[0].name}{enemyNumber}";
+            tiles[0].transform.position = new Vector2(vector.x, vector.y);
+            tiles[1] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("Super")), tempRoom.transform);
+            tiles[1].name = $"Enemy {enemyNumber}";
+            tiles[1].transform.localPosition = new Vector2(vector.x, vector.y);
+            enemyNumber++;
+        }
+
+        internal static void GenerateLake1(Vector2 vector, List<GameObject> tiles, List<GameObject> staticGameObjects, GameObject tempRoom, Dictionary<string, bool> setConstantObjects)
+        {
+            if (!setConstantObjects.ContainsKey("lake1Set"))
+            {
+                Instantiate(staticGameObjects.FirstOrDefault(s => s.name.StartsWith("Lake1")), tempRoom.transform).transform.position = vector;
+                setConstantObjects.Add("lake1Set", true);
+            }
+        }
+
+        internal static void GenerateLake2(Vector2 vector, List<GameObject> tiles, List<GameObject> staticGameObjects, GameObject tempRoom, Dictionary<string, bool> setConstantObjects)
+        {
+            if (!setConstantObjects.ContainsKey("lake2Set"))
+            {
+                Instantiate(staticGameObjects.FirstOrDefault(s => s.name.StartsWith("Lake2")), tempRoom.transform).transform.position = vector;
+                setConstantObjects.Add("lake2Set", true);
+            }
+        }
+
+        internal static void GenerateLake3(Vector2 vector, List<GameObject> tiles, List<GameObject> staticGameObjects, GameObject tempRoom, Dictionary<string, bool> setConstantObjects)
+        {
+            if (!setConstantObjects.ContainsKey("lake3Set"))
+            {
+                Instantiate(staticGameObjects.FirstOrDefault(s => s.name.StartsWith("Lake3")), tempRoom.transform).transform.position = vector;
+                setConstantObjects.Add("lake3Set", true);
+            }
+        }
+
+        public static List<Vector2> GenerateDoors(List<GameObject> tiles, int tileSize, int col, int row, int roomY, int roomX, int posX, int posY, Dictionary<string, bool> setConstantObjects, List<GameObject> gameobjects, List<Vector2> vectors, GameObject tempRoom, string doorDirection, int floorNumber, int lastRoom)
         {
             var doorAmount = new System.Random().Next(1, 4);
             var vectorsAroundSpawn = new List<Vector2>();
@@ -212,6 +447,8 @@ namespace Assets.Scripts
                 vectors.Add(tiles[7].transform.position = new Vector2(DoorUpX - 1f, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorUpX - 1f, posY));
 
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(DoorUpX, posY);
+
                 tiles[1] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorUp2")), tempRoom.transform);
                 vectors.Add(tiles[1].transform.localPosition = new Vector2(DoorUpX, posY + 2f));
 
@@ -225,6 +462,7 @@ namespace Assets.Scripts
                 vectors.Add(tiles[6].transform.position = new Vector2(DoorUpX + 2f, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorUpX + 2f, posY));
 
+
                 tiles[4] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorUp5")), tempRoom.transform);
                 vectors.Add(tiles[4].transform.localPosition = new Vector2(DoorUpX + 1f, posY + 2f));
 
@@ -232,13 +470,17 @@ namespace Assets.Scripts
                 vectors.Add(tiles[5].transform.localPosition = new Vector2(DoorUpX + 1f, posY + 3f));
                 setConstantObjects.Add("DoorUp", true);
 
-                if (floorNumber % 7 == 0)
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(DoorUpX, posY);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(DoorUpX + 1f, posY);
+
+                if (floorNumber == lastRoom)
                 {
                     foreach (var tile in tiles)
                     {
                         tile.tag = "DoorToBoss";
                     }
                 }
+
 
                 tiles[8] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("Spawn")), tempRoom.transform);
                 tiles[8].name = "SpawnUp";
@@ -290,10 +532,19 @@ namespace Assets.Scripts
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX - 1, posY));
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX - 1f, posY - 1f));
                 vectorsAroundSpawn.Add(new Vector2(DoorDownX + 1f, posY - 1f));
+
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(DoorDownX - 1f, posY);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(DoorDownX, posY);
             }
+
+
 
             if (col == 0 && !setConstantObjects.ContainsKey("DoorLeft") && doorDirection == "L")
             {
+
+                if (floorNumber % 4 == 0)
+                {
+
                 var DoorLeftY = random.Next(0 + 2, roomY - 2) * -tileSize;
 
                 tiles[0] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("cavetoshop_tileset_14")), tempRoom.transform); 
@@ -318,8 +569,18 @@ namespace Assets.Scripts
                 tiles[8].name = "SpawnLeft";
                 tiles[8].transform.localPosition = new Vector2(posX, DoorLeftY);
 
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(posX, DoorLeftY - 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("DoorFloor")), tempRoom.transform).transform.localPosition = new Vector2(posX, DoorLeftY);
+
                 setConstantObjects.Add("DoorLeft", true);
 
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 3f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 4f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 2f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 1f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 5f);
+                Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, DoorLeftY - 6f);
+                }
             }
 
             if (col == roomY && !setConstantObjects.ContainsKey("DoorRight") && doorDirection == "R")
@@ -368,7 +629,9 @@ namespace Assets.Scripts
                 {
                     tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("NorthWall3")), tempRoom.transform);
                     vectors.Add(tiles[2].transform.localPosition = new Vector2(posX, posY + 3f));
+                    Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY + 3f); ;
                 }
+
             }
             if (col == roomY)
             {
@@ -386,6 +649,7 @@ namespace Assets.Scripts
                 {
                     tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("RightWall3")), tempRoom.transform);
                     vectors.Add(tiles[2].transform.localPosition = new Vector2(posX + 3f, posY));
+                    Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX + 15f, posY - 1); ;
                 }
             }
             if (row == roomX)
@@ -406,6 +670,8 @@ namespace Assets.Scripts
                 {
                     tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("SouthWall3")), tempRoom.transform);
                     vectors.Add(tiles[2].transform.localPosition = new Vector2(posX, posY - 3f));
+                    Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("backgroundWall")), tempRoom.transform).transform.localPosition = new Vector2(posX, posY - 18f); ;
+
                 }
             }
             if (col == 0)
@@ -426,6 +692,7 @@ namespace Assets.Scripts
                 {
                     tiles[2] = Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("LeftWall3")), tempRoom.transform);
                     vectors.Add(tiles[2].transform.localPosition = new Vector2(posX - 3f, posY));
+                    Instantiate(gameobjects.FirstOrDefault(s => s.name.StartsWith("BackgroundWallSideways")), tempRoom.transform).transform.localPosition = new Vector2(posX - 22f, posY - 1); ;
                 }
             }
         }

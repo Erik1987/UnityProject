@@ -63,7 +63,7 @@ public class InventoryDatabase : MonoBehaviour
                         inv.negativeValue = true;
                     }
                     inv.ResetInventory();
-                    inv.AddItemsToList();   
+                    inv.AddItemsToList();
                     storageName = "";
                 }
             }

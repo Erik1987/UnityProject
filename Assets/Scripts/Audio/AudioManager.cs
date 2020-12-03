@@ -7,21 +7,15 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
     public static AudioManager instance;
     [HideInInspector]
-    public string Shop;
 
     private void Awake()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        //kesken!
+
         if (instance == null)
         {
             instance = this;
         }
-        else if (scene.name == Shop)
-        {
-            Destroy(gameObject);
-            Play("ShopMusic");
-        }
+
         else
         {
             Destroy(gameObject);
@@ -54,5 +48,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("sound: " + name + " not found");
+            return;
+        }
+        s.source.Stop();
     }
 }

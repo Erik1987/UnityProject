@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -10,21 +12,19 @@ public class SceneLoader : MonoBehaviour
     public int roomMinSizeY = 20;
     public int roomMinSizeX = 20;
     private bool firstTimeLoad = true;
+    
+    
     public void StartGame()
     {
+
+        GameObject loadingScreen = Resources.Load("loadingScreen") as GameObject;
+        Instantiate(loadingScreen);
+
         Time.timeScale = 1f;
 
         var roomGenerator = gameObject.AddComponent<RoomGenerator>();
         var foo = roomGenerator.StartGame(sceneAmount, roomMaxSizeX, roomMaxSizeY, roomMinSizeY, roomMinSizeX);
 
-        // PutOnLoadingScreen()
-        //while(!foo.IsCompleted)
-        //{
-        //    if (foo.IsCompleted)
-        //    {
-        //        PutOfLoadingScreen()
-        //    }
-        //}
 
         var objects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "New Game Object");
         foreach (var obj in objects)
@@ -37,6 +37,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Shop", LoadSceneMode.Additive);
         SceneManager.LoadScene("First Room", LoadSceneMode.Additive);
         firstTimeLoad = false;
+
     }
 
     public void QuitGame()

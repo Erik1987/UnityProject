@@ -30,5 +30,5 @@ public class Skill
     public int duration;
     public bool cooldown;
     public float cooldownTime;
-
+    public bool activated;
 }

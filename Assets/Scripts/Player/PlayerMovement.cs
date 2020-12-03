@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float waterSpeed = 4.5f;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -29,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
     }
+
+
+ 
 
     private void FixedUpdate()
     {
@@ -95,6 +99,25 @@ public class PlayerMovement : MonoBehaviour
         {
             var currentScene = SceneManager.GetActiveScene();
             SceneManager.SetActiveScene(player.trackedScenes.OriginalScene);
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "water")
+        {
+            UnityEngine.Debug.Log("water");
+            moveSpeed = waterSpeed;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "water")
+        {
+            UnityEngine.Debug.Log("water out");
+            moveSpeed = 5f;
         }
     }
 }

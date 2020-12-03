@@ -30,10 +30,17 @@ TagManager:
   - item
   - slot_canvas
   - slot
-  - dialogText
   - dialogBox
-  - SlotPanel
-  - InventoryPanel
+  - dialogText
+  - CtrlsNote
+  - water
+  - super-enemy
+  - waterFull
+  - toolTipWindow
+  - toolTip
+  - itemName
+  - itemInfo
+  - textBackground
   layers:
   - Default
   - TransparentFX

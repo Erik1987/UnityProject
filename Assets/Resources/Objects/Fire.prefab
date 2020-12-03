@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5018768583235134261}
   m_Layer: 15
   m_Name: Fire
-  m_TagString: Untagged
+  m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +286,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5156352867933855857, guid: fa4b202a18c609a4194aee4b86b7e9f5, type: 3}
+    - target: {fileID: 5841513597791224296, guid: 8ab07897d0cacef4f836e678e4ab5466, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ab07897d0cacef4f836e678e4ab5466, type: 3}
 --- !u!4 &3548008287531485716 stripped

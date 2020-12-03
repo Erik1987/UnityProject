@@ -18,7 +18,6 @@ public class EnemyBoss : MonoBehaviour
     public int currentHealth;
     public Slider healthBar;
 
-
     private float timeBtwShots;
     public float startTimeBtwShots;
     public float AttackDistance;
@@ -47,36 +46,53 @@ public class EnemyBoss : MonoBehaviour
         if (playerObj == null)
         {
             playerObj = GameObject.FindGameObjectWithTag("pelaaja");
-            player = playerObj.transform;
-            playerRenderer = playerObj.GetComponent<SpriteRenderer>();
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                playerRenderer = playerObj.GetComponent<SpriteRenderer>();
+            }
         }
 
         if (enemyObj == null)
             enemyObj = gameObject;
 
         timeBtwShots = startTimeBtwShots;
+
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Vector2 direction = Player.playerLocation - transform.position;
-        direction.Normalize();
-        movement = direction;
+        if (Player.playerLocation != null)
+        {
+            Vector2 direction = Player.playerLocation - transform.position;
+            direction.Normalize();
+            movement = direction;
 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        healthBar.value = currentHealth;
+            healthBar.value = currentHealth;
+
+        }
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
             Destroy(GameObject.FindGameObjectWithTag("hpslider"));
+            FindObjectOfType<AudioManager>().Stop("bossmusic");
+            FindObjectOfType<AudioManager>().Play("bossdeath");
+            FindObjectOfType<AudioManager>().Play("bossdeath1");
+            FindObjectOfType<AudioManager>().Play("EndMusic");
+
+            GameObject endScreen = Resources.Load("endScreen") as GameObject;
+            Instantiate(endScreen);
+            //endScreen.SetActive(true);
+            Time.timeScale = 0;
         }
 
-        if (timeBtwShots <= 0)
+        if (currentHealth <= 25 && timeBtwShots <= 0)
         {
             // Fireball
             Vector2 targetDirection = Player.playerLocation - transform.position;
@@ -94,7 +110,7 @@ public class EnemyBoss : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("bossfireball");
             timeBtwShots = startTimeBtwShots;
         }
-        else if (Vector2.Distance(Player.playerLocation, transform.position) > AttackDistance && !iceBurst.cooldown)
+        else if (currentHealth > 25 && !iceBurst.cooldown)
         {
             // Ice Burst
             StartCoroutine(IceBurstCooldown());
@@ -144,6 +160,12 @@ public class EnemyBoss : MonoBehaviour
         {
             currentHealth -= 1;
         }
+
+        if (collision.CompareTag("object"))
+        {
+            
+        }
+
     }
 
     private void moveCharacter(Vector2 direction)

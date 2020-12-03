@@ -117,7 +117,8 @@ public class Skills : MonoBehaviour
         )
     {
         float angleStep = 360f / projectileCount;
-        float angle = 0f;
+        System.Random random = new System.Random();
+        float angle = 0f + random.Next(0, 30);
         
         for (int i = 0; i < projectileCount; i++)
         {

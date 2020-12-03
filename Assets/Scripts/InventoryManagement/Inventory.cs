@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryItem;
     public GameObject inventoryCanvas;
     public Scene activeScene;
-    public int slotAmount;
+    int slotAmount;
 
     public List<Item> items = new List<Item>();
     public List<Item> itemsToFlush = new List<Item>();
@@ -47,14 +47,15 @@ public class Inventory : MonoBehaviour
         if (resetCompleted == false)
         {
 
-            GetAndSetComponents();
+            //GetAndSetComponents();
+            
 
             // preferred way to add new item to jsonDB, delete after first run (remember to add last value to true if you want to save an item to JsonDB)
             //inventoryDB.AddNewItem("shield_wood_basic_1", "Wooden Shield", "Shield", 0, 2, 0, 0, false, 0, 30, true);
-            InstantiateSlotsAndCanvases();
+            //InstantiateSlotsAndCanvases();
 
             // here items are added based on storage in JSON file
-            AddItemsToList();
+            //AddItemsToList();
 
             // here coins are instantiated
             InstantiateCoins();
@@ -123,7 +124,7 @@ public class Inventory : MonoBehaviour
         if (itemsCount > 0)
         {
             GameObject[] tempObj = GameObject.FindGameObjectsWithTag("item");
-            var itemsRemoved = false;
+
 
             for (int i = 0; i < tempObj.Length; i++)
             {
@@ -131,7 +132,7 @@ public class Inventory : MonoBehaviour
                 {
                     gameObjects.Remove(tempObj[i]);
                     Destroy(tempObj[i]);
-                    
+                    //canvases[i].transform.GetChild(1).GetComponent<ItemData>().amount = 1;
                 }
                 else
                 {
@@ -139,7 +140,6 @@ public class Inventory : MonoBehaviour
                     break;
                 }
             }
-            
             for (int k = 0; k < slotAmount; k++)
             {
                 if (items[k] == itemsToFlush[k] /*&& itemsToFlush[k].id != -1*/)
@@ -148,27 +148,24 @@ public class Inventory : MonoBehaviour
                     {
                         Item removeItem = itemsToFlush[a];
                         items.Remove(removeItem);
-                        if (a == slotAmount) // edited 30 nov 2020
+                        if (a == slotAmount)
                         {
                             itemsToFlush.Clear();
                         }
                     }
-                    itemsRemoved = true;
+
                 }
-                if (items.Count() <= slotAmount)
+                if (items.Count() < slotAmount)
                 {
                     break;
                 }
             }
+
             foreach (var item in tempObj)
             {
-                if (itemsRemoved == true)
-                {
-                    items.Add(new Item());
-                }
+                items.Add(new Item());
                 //itemsToFlush.Add(new Item());
             }
-            itemsRemoved = false;
             resetCompleted = true;
             value = 0;
         }
@@ -177,7 +174,6 @@ public class Inventory : MonoBehaviour
             Debug.Log("No items in inventory to reset!");
             destroyBool = false;
         }
-       
     }
     public void ResetSlotsAndCanvases()
     {
@@ -231,12 +227,13 @@ public class Inventory : MonoBehaviour
     public void InstantiateCoins()
     {
         coinObject = Instantiate(Resources.Load($"Items/coins_for_inventory") as GameObject);
-        coinObject.transform.SetParent(inventoryPanel.transform);
+        var hud = GameObject.Find("HUDcanvas");
+        coinObject.transform.SetParent(hud.transform);
         coinObject.transform.name = "Coins";
         coinObject.transform.position = Vector3.zero;
         coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        coinObject.transform.localScale = new Vector3((float)2.5, (float)1.5, 1);
-        coinObject.transform.localPosition = new Vector3(-570, 350, (float)-26.11531);
+        coinObject.transform.localScale = new Vector3((float)1.25, (float)1.25, 1);
+        coinObject.transform.localPosition = new Vector3(-292, 136, (float)-26.11531);
         if (currentCoins >= 0)
         {
             coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
@@ -245,7 +242,7 @@ public class Inventory : MonoBehaviour
         else
         {
             coinObject.GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            coinObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Tommi's famous quotes: \"Valtteri why you broke the game?\" ";
+            coinObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Tommi's famous quotes: \"Valtteri why you fixed the game?\" ";
         }
     }
 
@@ -287,10 +284,9 @@ public class Inventory : MonoBehaviour
                 }
                 query = true;
             }
-            if (count == (slotAmount-1))
+            if (count == slotAmount)
             {
                 inventoryFull = true;
-                Debug.Log("Inventory Full!");
             }
 
         }
@@ -306,7 +302,6 @@ public class Inventory : MonoBehaviour
 
     public int value { get; set; }
     public List<GameObject> gameObjects;
-    public int b = 1;
     // Add item by id, check if they exists in database, instantiate them
     public void InstantiateAddedItems(int id)
     {
@@ -315,7 +310,6 @@ public class Inventory : MonoBehaviour
             inventoryDB = new InventoryDatabase();
             inventoryDB.ReadJsonData();
         }
-
         
         Item itemToAdd = inventoryDB.FetchItemByID(id);
         // Checks if item exists in database and stacks them by number
@@ -344,8 +338,9 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-                for (int i = 0; i < items.Count; i++)
-                {
+            // loops all added items and instantiates objects
+            for (int i = 0; i < items.Count; i++)
+            {
                 if (canvases[i].transform.Find("Placeholder") != null && canvases[i].transform.childCount == 1)
                 {
                     if (itemToAdd.id != -2)
@@ -356,10 +351,6 @@ public class Inventory : MonoBehaviour
                             value++;
                         }
                         items[i] = itemToAdd;
-                        foreach (var item in items)
-                        {
-                            Debug.Log("Items: " + item.id);
-                        }
                         GameObject itemObj = Instantiate(Resources.Load($"Items/{itemToAdd.location}") as GameObject);
                         itemObj.GetComponent<ItemData>().item = itemToAdd;
                         itemObj.GetComponent<ItemData>().canv = i;
@@ -378,10 +369,7 @@ public class Inventory : MonoBehaviour
                         itemsCount++;
                         itemsToFlush[i] = items[i];
                     }
-                   
                     break;
-                
-                
                 }
             }
             

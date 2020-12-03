@@ -4,11 +4,19 @@ using System.Collections.Generic;
 
 public class AnimationSounds : MonoBehaviour
 {
-    private AudioSource animationPlayer;
+    [HideInInspector]
+    public AudioSource[] sounds;
+    [HideInInspector]
+    public AudioSource step1;
+    [HideInInspector]
+    public AudioSource step2;
+    
 
     private void Start()
     {
-        animationPlayer = GetComponent<AudioSource>();
+        sounds = GetComponents<AudioSource>();
+        step1 = sounds[0];
+        step2 = sounds[1];
     }
 
     private void Update()
@@ -17,8 +25,15 @@ public class AnimationSounds : MonoBehaviour
 
     private void playFootstep() 
     { 
-        animationPlayer.volume = Random.Range(0.2f, 0.3f);
-        animationPlayer.pitch = Random.Range(1f, 1.17f);
-        animationPlayer.Play();
+        if (GetComponent<PlayerMovement>().moveSpeed == 5f){
+        step1.volume = Random.Range(0.17f, 0.29f);
+        step1.pitch = Random.Range(1.05f, 1.23f);
+        step1.Play();
+        }else {
+        step2.volume = Random.Range(0.17f, 0.27f);
+        step2.pitch = Random.Range(1.05f, 1.23f);
+        step2.Play();
+        }
     }
+
 }

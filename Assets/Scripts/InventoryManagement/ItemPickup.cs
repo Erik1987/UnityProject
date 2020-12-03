@@ -23,7 +23,6 @@ public class ItemPickup : MonoBehaviour
             if (currentObject == PickupObject.COIN)
             {
                 player.coins += pickupQuantity;
-                Inventory.coins += pickupQuantity;
                 FindObjectOfType<AudioManager>().Play("coinpickup");
             }
             else if (currentObject == PickupObject.HEART)

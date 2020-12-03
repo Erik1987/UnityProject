@@ -41,6 +41,7 @@ public class Chest : MonoBehaviour
     private void OpenChest()
     {
         gameObject.GetComponent<Animator>().SetTrigger("open");
+        FindObjectOfType<AudioManager>().Play("crateopen");
     }
 
     private IEnumerator DropLoot()

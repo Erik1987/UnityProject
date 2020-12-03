@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5278693172929539873}
   m_Layer: 16
   m_Name: InventoryPanel
-  m_TagString: InventoryPanel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,10 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
-  itemsForStorage: []
-  ifOnChangedAndSaved: 0
-  storageChange: 0
-  uniqueIDForInventory: -5
   setAddItemTrue: 0
 --- !u!114 &5278693172929539903
 MonoBehaviour:
@@ -114,16 +110,9 @@ MonoBehaviour:
   inventorySlot: {fileID: 2433369820237624407, guid: 8446342d34ca309499a20a4e7053e074, type: 3}
   inventoryItem: {fileID: 260939922110153687, guid: 6ea5c9d8b16a63c459c3a5e601875cd5, type: 3}
   inventoryCanvas: {fileID: 5707261711464562313, guid: 35e6bd4e5a41fb641b0c30f362a0e718, type: 3}
-  activeScene:
-    m_Handle: 0
   items: []
-  itemsToFlush: []
   slots: []
   canvases: []
-  negativeValue: 0
-  inventoryFull: 0
-  gameObjects: []
-  b: 0
 --- !u!114 &5278693172929539873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,7 +600,7 @@ GameObject:
   - component: {fileID: 5278693174096770061}
   m_Layer: 16
   m_Name: SlotPanel
-  m_TagString: SlotPanel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 8652178030735872933, guid: 5e72952eef342be47b16a1b4a3422f12, type: 3}
+  target: {fileID: 1682087336524499868, guid: 11d8b76450cc67e43bcc3bf22ccac275, type: 3}
 --- !u!114 &5288391868015466234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,6 @@ MonoBehaviour:
   enemyRenderer: {fileID: 3529216515893096242}
   moveSpeed: 3
   animator: {fileID: 8873620254169909973}
-  projectileSpeed: 15
   startTimeBtwShots: 2
 --- !u!114 &8913712166205093466
 MonoBehaviour:

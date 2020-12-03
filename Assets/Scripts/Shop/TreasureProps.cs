@@ -1,9 +1,11 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class TreasureProps : MonoBehaviour
 {
+    private V2Inventory v2Inventory;
+    public GameObject itemButton;
     public string name;
     public int price;
     public GameObject dialogBox;
@@ -14,6 +16,7 @@ public class TreasureProps : MonoBehaviour
     private Image dialogBackground;
     InventoryDatabase inventoryDatabase = new InventoryDatabase();
     private bool storeInitiated = false;
+    public bool isSpawned = false;
     //GameObject player = GameObject.Find("Player");
     //Player playerScript = player.GetComponent<Player>();
     // Start is called before the first frame update
@@ -27,9 +30,18 @@ public class TreasureProps : MonoBehaviour
         storeInitiated = true;
     }
 
+    private void Start()
+    {
+        v2Inventory = GameObject.FindGameObjectWithTag("pelaaja").GetComponent<V2Inventory>();
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        var player = GameObject.FindGameObjectsWithTag("pelaaja").FirstOrDefault();
+        var inv = player.transform.GetComponentInChildren<Inventory>();
+
         if (!storeInitiated)
         {
             InitiateStore();
@@ -44,20 +56,39 @@ public class TreasureProps : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Y) && dialogBackground.enabled && touchingItem)
         {
-            if (GameObject.Find("Player").GetComponent<Player>().coins >= price)
+            if (GameObject.Find("Player").GetComponent<Player>().coins >= price /*&& inv.inventoryFull != true*/)
             {
-                Destroy(this.gameObject);
+                for (int i = 0; i < v2Inventory.slots.Length; i++)
+                {
+                    if(v2Inventory.isInventoryFull[i] == false)
+                    {
+                        v2Inventory.isInventoryFull[i] = true;
+                        Instantiate(itemButton, v2Inventory.slots[i].transform, false);
+                        Destroy(gameObject);
+                        break;
+                    }
+                }
+
+                //Destroy(this.gameObject);
                 GameObject.Find("Player").GetComponent<Player>().coins -= price;
                 var split = gameObject.name.Split('(');
-                var player = GameObject.FindGameObjectsWithTag("pelaaja").FirstOrDefault();
-                var inv = player.transform.GetComponentInChildren<Inventory>();
-                if (inv.inventoryFull != true)
+                FindObjectOfType<AudioManager>().Play("buyfromshop");
+                
+                //HUOM tämä crashaa pelin jos jostain syystä inventory pääsee täyttymään kokonaan pelikerran aikana
+               /* if (inv.inventoryFull != true)
                 {
-                inventoryDatabase.OnChange(split[0], 1);
-                }
+                    inventoryDatabase.OnChange(split[0], 1);
+                }*/
                 // to use item call it like in below
                 //inventoryDatabase.OnChange(split[0], -1);
 
+            } /*else if (GameObject.Find("Player").GetComponent<Player>().coins >= price && inv.inventoryFull)
+            {
+                dialogText.text = "Your inventory is full";
+            }*/
+            else
+            {
+                dialogText.text = "You need to have more money";
             }
 
         }
