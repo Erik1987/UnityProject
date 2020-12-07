@@ -5456,7 +5456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4657955574c944ebdea43e3b37f13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneAmount: 1
+  sceneAmount: 2
   roomMaxSizeX: 30
   roomMaxSizeY: 30
   roomMinSizeY: 30

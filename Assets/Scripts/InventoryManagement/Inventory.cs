@@ -77,7 +77,7 @@ public class Inventory : MonoBehaviour
         var pleia = GameObject.FindGameObjectsWithTag("pelaaja").FirstOrDefault();
         var player = pleia.transform.GetComponent<Player>();
 
-        if (player.coins != coins)
+        if (player.coins != currentCoins)
         {
             currentCoins = player.coins;
             coinObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentCoins.ToString();
@@ -91,13 +91,13 @@ public class Inventory : MonoBehaviour
             ResetInventory();
         }
 
-        if (SceneManager.GetActiveScene() != activeScene)
-        {
-            for (int i = 0; i < slotAmount; i++)
-            {
-                canvases[i].GetComponent<Canvas>().sortingOrder = 32767;
-            } 
-        }
+        //if (SceneManager.GetActiveScene() != activeScene)
+        //{
+        //    for (int i = 0; i < slotAmount; i++)
+        //    {
+        //        canvases[i].GetComponent<Canvas>().sortingOrder = 32767;
+        //    } 
+        //}
     }
 
     public void GetAndSetComponents()
