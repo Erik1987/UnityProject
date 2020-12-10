@@ -41,6 +41,7 @@ TagManager:
   - itemName
   - itemInfo
   - textBackground
+  - Health
   layers:
   - Default
   - TransparentFX
@@ -53,7 +54,7 @@ TagManager:
   - object
   - pelaaja
   - vihollinen
-  - 
+  - enemyProjectile
   - HUD
   - 
   - 

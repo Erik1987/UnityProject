@@ -83,12 +83,10 @@ public class EnemyBoss : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("hpslider"));
             FindObjectOfType<AudioManager>().Stop("bossmusic");
             FindObjectOfType<AudioManager>().Play("bossdeath");
-            FindObjectOfType<AudioManager>().Play("bossdeath1");
             FindObjectOfType<AudioManager>().Play("EndMusic");
 
             GameObject endScreen = Resources.Load("endScreen") as GameObject;
             Instantiate(endScreen);
-            //endScreen.SetActive(true);
             Time.timeScale = 0;
         }
 
@@ -159,11 +157,6 @@ public class EnemyBoss : MonoBehaviour
         if (collision.CompareTag("damage1"))
         {
             currentHealth -= 1;
-        }
-
-        if (collision.CompareTag("object"))
-        {
-            
         }
 
     }

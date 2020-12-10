@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3a2fea503572d4e95b1ff7f77090d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootCount: 50
+  lootCount: 15
+  spawnedEnemies: 20
 --- !u!61 &6280576233780990416
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 2738371627934898533, guid: bea1d22ea2a1db54aa7a54db7ff627a1, type: 3}
   name: Burger
-  price: 3
+  price: 8
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: 

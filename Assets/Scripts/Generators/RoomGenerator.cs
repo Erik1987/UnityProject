@@ -108,6 +108,7 @@ public class RoomGenerator : MonoBehaviour
                             if (scene2Number < scene1Number)
                             {
                                 player.transform.position = spawnUp.gameObject.transform.position;
+                                
                             }
 
                             if (scene2Number > scene1Number)

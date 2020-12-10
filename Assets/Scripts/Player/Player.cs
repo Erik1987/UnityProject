@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
         gameMode = "Easy";
         if (gameMode == "Easy")
         {
-            currentHealth = 7;
-            currentMana = 7;
+            currentHealth = 10;
+            currentMana = 10;
         }
         else if (gameMode == "Medium")
         {
@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
                 FindObjectOfType<AudioManager>().Stop("EndMusic");
                 FindObjectOfType<AudioManager>().Stop("bossmusic");
                 FindObjectOfType<AudioManager>().Stop("Theme");
+                FindObjectOfType<AudioManager>().Stop("ShopMusic");
                 FindObjectOfType<AudioManager>().Play("gameover");
                 GameOver.gameObject.SetActive(true);
                 Time.timeScale = 0;
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour
 
                 FindObjectOfType<AudioManager>().Play("gameover");
                 FindObjectOfType<AudioManager>().Stop("Theme");
+                FindObjectOfType<AudioManager>().Stop("ShopMusic");
                 FindObjectOfType<AudioManager>().Stop("bossmusic");
 
                 GameOver.gameObject.SetActive(true);
@@ -116,7 +118,6 @@ public class Player : MonoBehaviour
         GetComponent<Animator>().SetBool("takesDamage", false);
         immune = false;
     }
-    /*
     public void Save()
     {
         SaveSystem.SavePlayer(this);
@@ -139,5 +140,23 @@ public class Player : MonoBehaviour
 
         Debug.Log("Player Loaded ");
     }
-    */
+
+    public void addHealthBurger()
+    {
+        currentHealth = 10;
+    }
+
+    public void addHealthPlant()
+    {
+        if(currentHealth < 7)
+        {
+            currentHealth += 3;
+        }
+        else
+        {
+            currentHealth = 10;
+        }
+    }
+
+   
 }

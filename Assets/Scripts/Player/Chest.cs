@@ -5,8 +5,10 @@ public class Chest : MonoBehaviour
 {
     private GameObject player;
     private bool opened;
-    public int lootCount = 50;
+    public int lootCount;
+    public int spawnedEnemies;
     private GameObject coin;
+    private GameObject superEnemy;
 
     // Start is called before the first frame update
     private void Start()
@@ -14,6 +16,7 @@ public class Chest : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("pelaaja");
         opened = false;
         coin = Resources.Load<GameObject>("Treasures/Coin");
+        superEnemy = Resources.Load<GameObject>("Enemies/Super-Ninja");
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class Chest : MonoBehaviour
     {
         gameObject.GetComponent<Animator>().SetTrigger("open");
         FindObjectOfType<AudioManager>().Play("crateopen");
+        SpawnEnemies();
     }
 
     private IEnumerator DropLoot()
@@ -94,6 +98,24 @@ public class Chest : MonoBehaviour
             {
                 loot.GetComponent<SpriteRenderer>().sortingOrder = 1;
             }
+        }
+    }
+
+    private void SpawnEnemies()
+    {
+        System.Random random = new System.Random();
+        for (int i = 0; i < spawnedEnemies; i++)
+        {
+            Vector2 spawnPoint = transform.position;
+            float randomX = (float)(random.NextDouble() * 6) + 1;
+            float randomY = (float)(random.NextDouble() * -3) - 1;
+            if (random.Next(0, 2) == 1)
+            {
+                randomX *= -1;
+            }
+            spawnPoint.x += randomX;
+            spawnPoint.y += randomY;
+            Instantiate(superEnemy, spawnPoint, Quaternion.identity);
         }
     }
 }

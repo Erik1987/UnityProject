@@ -277,11 +277,11 @@ PrefabInstance:
     - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+      objectReference: {fileID: 11400000, guid: 117ec7fba1aec7245bb1e76d4b80dc1e, type: 2}
     - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+      objectReference: {fileID: -7864531330070253059, guid: 117ec7fba1aec7245bb1e76d4b80dc1e, type: 2}
     - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -297,6 +297,18 @@ PrefabInstance:
     - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
       propertyPath: m_fontColor.b
       value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
+      propertyPath: m_fontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548037027564666998, guid: c83b9cb88fc4312428c1592684f62747, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 1024
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c83b9cb88fc4312428c1592684f62747, type: 3}

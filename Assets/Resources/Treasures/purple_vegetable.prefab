@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemButton: {fileID: 3179382464478274588, guid: 89497d2d825b800448241d112a31b800, type: 3}
   name: Mysterious Plant
-  price: 10
+  price: 3
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: 

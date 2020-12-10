@@ -47,7 +47,7 @@ public class TreasureProps : MonoBehaviour
             InitiateStore();
         };
 
-        if (Input.GetKeyDown(KeyCode.Q) && touchingItem)
+        if (Input.GetKeyDown(KeyCode.F) && touchingItem)
         {
 
             dialogText.text = dialog;
@@ -63,6 +63,7 @@ public class TreasureProps : MonoBehaviour
                     if(v2Inventory.isInventoryFull[i] == false)
                     {
                         v2Inventory.isInventoryFull[i] = true;
+                        GameObject.Find("Player").GetComponent<Player>().coins -= price;
                         Instantiate(itemButton, v2Inventory.slots[i].transform, false);
                         Destroy(gameObject);
                         break;
@@ -70,7 +71,7 @@ public class TreasureProps : MonoBehaviour
                 }
 
                 //Destroy(this.gameObject);
-                GameObject.Find("Player").GetComponent<Player>().coins -= price;
+                
                 var split = gameObject.name.Split('(');
                 FindObjectOfType<AudioManager>().Play("buyfromshop");
                 

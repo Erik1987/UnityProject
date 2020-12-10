@@ -37,7 +37,7 @@ public class RangedAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !fireball.cooldown)
+        if (Input.GetMouseButton(0) && !fireball.cooldown && !PauseMenu.IsPaused)
         {
             GetComponent<Animator>().SetTrigger("Casts");
             skills.ShootProjectilesInCone(
@@ -133,6 +133,12 @@ public class RangedAttack : MonoBehaviour
         iceSpiral.cooldown = false;
         lightningSigil.cooldown = false;
         dash.cooldown = false;
+
+        GameObject[] projectiles = GameObject.FindGameObjectsWithTag("damage1");
+        foreach (GameObject projectile in projectiles)
+        {
+            Destroy(projectile);
+        }
     }
 
     private IEnumerator FireballCooldown()
@@ -240,6 +246,7 @@ public class RangedAttack : MonoBehaviour
                 colliderCheck.collider.CompareTag("damageP") ||
                 colliderCheck.collider.CompareTag("damage1") ||
                 colliderCheck.collider.CompareTag("Coin") ||
+                colliderCheck.collider.CompareTag("Health") ||
                 colliderCheck.collider.CompareTag("StoryNote") ||
                 colliderCheck.collider.CompareTag("StoryNote1") ||
                 colliderCheck.collider.CompareTag("StoryNote2") ||

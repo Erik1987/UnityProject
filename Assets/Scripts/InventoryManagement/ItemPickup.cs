@@ -25,10 +25,10 @@ public class ItemPickup : MonoBehaviour
                 player.coins += pickupQuantity;
                 FindObjectOfType<AudioManager>().Play("coinpickup");
             }
-            else if (currentObject == PickupObject.HEART)
+            else if (currentObject == PickupObject.HEART && player.currentHealth < 10)
             {
                 player.currentHealth += pickupQuantity;
-                
+                FindObjectOfType<AudioManager>().Play("HealthPickup");
             }
             else if (currentObject == PickupObject.MANA)
             {

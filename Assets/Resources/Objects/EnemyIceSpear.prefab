@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 1636743181800047282}
   - component: {fileID: 8544102423763730595}
   - component: {fileID: 1581685753459020312}
-  - component: {fileID: 7760875887643195771}
   - component: {fileID: -2974071861161943235}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: EnemyIceSpear
   m_TagString: damageP
   m_Icon: {fileID: 0}
@@ -133,18 +132,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7760875887643195771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5234364469958514085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39acb3b4ca588eb4fabc82cbd6d02443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2974071861161943235
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ProjectileImpact : MonoBehaviour
         if (!collision.collider.CompareTag("pelaaja") && 
             !collision.collider.CompareTag("damage1") &&
             !collision.collider.CompareTag("Coin") &&
+            !collision.collider.CompareTag("Health") &&
             !collision.collider.CompareTag("StoryNote") &&
             !collision.collider.CompareTag("StoryNote1") &&
             !collision.collider.CompareTag("StoryNote2") &&
@@ -24,6 +25,7 @@ public class ProjectileImpact : MonoBehaviour
         if (!collision.CompareTag("pelaaja") &&
             !collision.CompareTag("damage1") &&
             !collision.CompareTag("Coin") &&
+            !collision.CompareTag("Health") &&
             !collision.CompareTag("StoryNote") &&
             !collision.CompareTag("StoryNote1") &&
             !collision.CompareTag("StoryNote2") &&

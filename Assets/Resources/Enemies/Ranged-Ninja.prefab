@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7343092073923417455}
   - component: {fileID: 8913712166205093466}
   - component: {fileID: 1850789213718938169}
+  - component: {fileID: 1008553615148750576}
   m_Layer: 10
   m_Name: Ranged-Ninja
   m_TagString: enemy
@@ -213,9 +214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.78
-  height: 2
-  repathRate: 0.1
+  radius: 1
+  height: 1
+  repathRate: 0.5
   canSearch: 1
   canMove: 1
   maxSpeed: 3
@@ -230,7 +231,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.76
-  pickNextWaypointDist: 2
+  pickNextWaypointDist: 0.76
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -249,9 +250,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04732716, y: 0.0095175505}
+  m_Offset: {x: -0.03271556, y: -0.029446721}
   serializedVersion: 2
-  m_Radius: 0.43881023
+  m_Radius: 0.44368088
 --- !u!114 &7343092073923417455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
   currentMana: 2
   tweetPrefab: {fileID: 2296995199024147687, guid: f89a45adea7863a41bafb528f35e4ace, type: 3}
   coinDrop: {fileID: 3874165876061406940, guid: d347b714bbbb6984b85f0ef084f44e9e, type: 3}
+  healthDrop: {fileID: 9014371634960012433, guid: 7b383c72d227f4e4ea253657e5b2930d, type: 3}
   noteList:
   - {fileID: 3581024011846353403, guid: b467f4727dd056449b4ad9efd59bbe90, type: 3}
   - {fileID: 3581024011846353403, guid: c4a51c52bb8654e4d930e332b30b01dd, type: 3}
@@ -304,3 +306,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df15b019c2c93e4e8b8d588053508d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &1008553615148750576
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967411895998694063}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 9f1de7d781ab3af4f992e9c8c339c1dd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.043834627, y: 0.034119368}
+  m_Size: {x: 0.7304567, y: 1.2990403}
+  m_Direction: 0

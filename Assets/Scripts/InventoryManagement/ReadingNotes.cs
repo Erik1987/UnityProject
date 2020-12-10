@@ -38,56 +38,60 @@ public class ReadingNotes : MonoBehaviour
 
      private void OnTriggerEnter2D(Collider2D other)
        {
-
-        GameObject[] enemies = FindObjectsOfType<GameObject>().Where(s => s.scene == SceneManager.GetActiveScene()).Where(s => s.name.Contains("Enemy") && !s.name.Contains("Spawn")).ToArray();
-        
-        if (!enemies.Any())
+        if (other.CompareTag("StoryNote") ||
+            other.CompareTag("StoryNote1") ||
+            other.CompareTag("StoryNote2") ||
+            other.CompareTag("StoryNote3") ||
+            other.CompareTag("StoryNote4") ||
+            other.CompareTag("CtrlsNote"))
         {
-            if (other.CompareTag("StoryNote"))
+            GameObject[] enemies = FindObjectsOfType<GameObject>().Where(s => s.scene == SceneManager.GetActiveScene()).Where(s => s.name.Contains("Enemy") && !s.name.Contains("Spawn")).ToArray();
+            if (!enemies.Any())
             {
-                storyNote.SetActive(true);
-                note0hasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
-            }
-            if (other.CompareTag("StoryNote1"))
-            {
-                storyNote1.SetActive(true);
-                note1hasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
-            }
-            if (other.CompareTag("StoryNote2"))
-            {
-                storyNote2.SetActive(true);
-                note2hasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
-            }
-            if (other.CompareTag("StoryNote3"))
-            {
-                storyNote3.SetActive(true);
-                note3hasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
-            }
-            if (other.CompareTag("StoryNote4"))
-            {
-                storyNote4.SetActive(true);
-                note4hasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
-            }
-            if (other.CompareTag("CtrlsNote"))
-            {
-                controlsNote.SetActive(true);
-                ctrlshasBeenRead = true;
-                Time.timeScale = 0f;
-                FindObjectOfType<AudioManager>().Play("notepickup");
+                if (other.CompareTag("StoryNote"))
+                {
+                    storyNote.SetActive(true);
+                    note0hasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
+                if (other.CompareTag("StoryNote1"))
+                {
+                    storyNote1.SetActive(true);
+                    note1hasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
+                if (other.CompareTag("StoryNote2"))
+                {
+                    storyNote2.SetActive(true);
+                    note2hasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
+                if (other.CompareTag("StoryNote3"))
+                {
+                    storyNote3.SetActive(true);
+                    note3hasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
+                if (other.CompareTag("StoryNote4"))
+                {
+                    storyNote4.SetActive(true);
+                    note4hasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
+                if (other.CompareTag("CtrlsNote"))
+                {
+                    controlsNote.SetActive(true);
+                    ctrlshasBeenRead = true;
+                    Time.timeScale = 0f;
+                    FindObjectOfType<AudioManager>().Play("notepickup");
+                }
             }
         }
-        
-
     }
 
     private void Close()

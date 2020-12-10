@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 6c13607b0fa41e24b8d5178b795a7011, type: 3}
+    clip: {fileID: 8300000, guid: 54ea742c8b898e2498bd3b9c7bb1fef2, type: 3}
     mixerGroup: {fileID: -8504458046062938682, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.4
     pitch: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b10f5c5b1ed7a6f479e9deb2dbbca67e, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.45
-    pitch: 1.05
+    pitch: 1.1
     loop: 0
     source: {fileID: 0}
   - name: Footstep
@@ -101,10 +101,10 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: TakeDamage
-    clip: {fileID: 8300000, guid: 3d4aaab2e2340ae40964eb5a90a2dab4, type: 3}
+    clip: {fileID: 8300000, guid: 2bf53191b956367499ec63198384360e, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.8
-    pitch: 1.1
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: EnemyDeath
@@ -143,16 +143,16 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: bossfireball
-    clip: {fileID: 8300000, guid: b6232efd13481e3479fefcefb07d3c52, type: 3}
+    clip: {fileID: 8300000, guid: b10f5c5b1ed7a6f479e9deb2dbbca67e, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
-    volume: 0.65
-    pitch: 0.7
+    volume: 0.7
+    pitch: 0.73
     loop: 0
     source: {fileID: 0}
   - name: bossiceburst
     clip: {fileID: 8300000, guid: c23161e8f66cb9f47b162a4c9acc47c3, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
-    volume: 0.65
+    volume: 0.55
     pitch: 0.63
     loop: 0
     source: {fileID: 0}
@@ -160,13 +160,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 35fc59a99137d3944985b08a929b25f4, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.9
-    pitch: 1
+    pitch: 1.1
     loop: 0
     source: {fileID: 0}
   - name: crateopen
     clip: {fileID: 8300000, guid: 279aa34239ffceb47a7f492a5d9d95db, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
-    volume: 0.85
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -185,13 +185,13 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: bossdeath
-    clip: {fileID: 8300000, guid: 0349577a37ad76946b398560e0a7b654, type: 3}
+    clip: {fileID: 8300000, guid: 2ae7f86db3003a447bb3397c3feb1785, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
-    volume: 0.9
+    volume: 0.85
     pitch: 0.8
     loop: 0
     source: {fileID: 0}
-  - name: bossdeath1
+  - name: empty
     clip: {fileID: 8300000, guid: ec0b14ff06795a34e93e2e743afc7cf8, type: 3}
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.9
@@ -210,5 +210,19 @@ MonoBehaviour:
     mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
     volume: 0.45
     pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: HealthPickup
+    clip: {fileID: 8300000, guid: 050cd54b1af08e44881c888d1b490ac7, type: 3}
+    mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
+    volume: 0.35
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: EatItem
+    clip: {fileID: 8300000, guid: b4ac53a3f115f764aa0580b0b455c50d, type: 3}
+    mixerGroup: {fileID: 4277762814417504720, guid: af8b2eccf8735064ebdaf3431a310d54, type: 2}
+    volume: 0.55
+    pitch: 1
     loop: 0
     source: {fileID: 0}

@@ -10,7 +10,6 @@ public class CheckSave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         string path = SaveSystem.path;
         if (File.Exists(path))
         {
@@ -24,6 +23,5 @@ public class CheckSave : MonoBehaviour
             go.GetComponentInChildren<TextMeshProUGUI>().color = new Color32(231, 98, 76, 255);
           
         }
-        
     }
 }

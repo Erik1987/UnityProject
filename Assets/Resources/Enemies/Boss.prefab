@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.78
-  height: 0.01
+  radius: 1.69
+  height: 1.69
   repathRate: 0.1
   canSearch: 1
   canMove: 1
@@ -217,8 +217,8 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.76
-  pickNextWaypointDist: 2
+  slowdownDistance: 0.77
+  pickNextWaypointDist: 1.7
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -270,9 +270,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029175043, y: 0.033550978}
+  m_Offset: {x: -0.019584894, y: 0.033550978}
   serializedVersion: 2
-  m_Radius: 0.73111296
+  m_Radius: 0.9325061
 --- !u!114 &4458513106614601910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,4 +413,5 @@ MonoBehaviour:
   currentMana: 0
   tweetPrefab: {fileID: 0}
   coinDrop: {fileID: 0}
+  healthDrop: {fileID: 0}
   noteList: []

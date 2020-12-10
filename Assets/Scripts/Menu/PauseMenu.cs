@@ -62,6 +62,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         SceneManager.LoadScene("mainMenu");
+        IsPaused = false;
+        FindObjectOfType<AudioManager>().Stop("bossmusic");
+        FindObjectOfType<AudioManager>().Stop("ShopMusic");
+        FindObjectOfType<AudioManager>().Stop("EndMusic");
+        FindObjectOfType<AudioManager>().Play("Theme");
     }
 
     public void QuitGame()

@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject tweetPrefab;
     private bool tweetShown;
     public GameObject coinDrop;
+    public GameObject healthDrop;
     private int noteNum;
     public GameObject[] noteList;
 
@@ -98,6 +99,10 @@ public class Enemy : MonoBehaviour
         if (randomNumber >= 0 && randomNumber <= 20)
         {
             Instantiate(coinDrop, transform.position, Quaternion.identity);
+        }
+        if (randomNumber >= 60 && randomNumber <= 70)
+        {
+            Instantiate(healthDrop, transform.position, Quaternion.identity);
         }
         else if (randomNumber == 99 && note0hasSpawned == false)
         {
