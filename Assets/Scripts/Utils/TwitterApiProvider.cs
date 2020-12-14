@@ -11,8 +11,7 @@ public class TwitterApiProvider : MonoBehaviour
     // Start is called before the first frame update
     private string ApiKey = "nZJFcdO72uchXDap5ColyQh5m";
 
-    private string ApiKeySecret = "OOYJBxrUjFOPiaxzTCwymA6Aczr2b8cmeDsghou8Vm2kHlgibo";
-    private string Token = "AAAAAAAAAAAAAAAAAAAAAHe%2FHgEAAAAAkCvGs%2BoMSRzd%2BxaST5zOJbVFdmw%3DspdHlU8Aap03Xfi2SeFALIjEGmdv9FU8JNnvwnWijmFdpGgc9E";
+    // apie keys deleted
     private HttpClient client;
     public static List<Tweets> publicTweets;
     public static bool canNextTweetBeShown = true;
