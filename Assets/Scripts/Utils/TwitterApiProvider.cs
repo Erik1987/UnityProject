@@ -9,8 +9,7 @@ using UnityEngine;
 public class TwitterApiProvider : MonoBehaviour
 {
     // Start is called before the first frame update
-    private string ApiKey = "nZJFcdO72uchXDap5ColyQh5m";
-
+    
     // apie keys deleted
     private HttpClient client;
     public static List<Tweets> publicTweets;
